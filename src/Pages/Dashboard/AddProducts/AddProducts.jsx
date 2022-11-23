@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { format } from 'date-fns';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const AddProducts = () => {
 	const {
@@ -12,6 +13,12 @@ const AddProducts = () => {
 
 	const { user } = useContext(AuthContext);
 
+	const { data: categories = [] } = useQuery({
+		queryKey: ['categories'],
+		queryFn: () => fetch(`http://localhost:5000/categories`).then((res) => res.json()),
+	});
+
+
 	const time = new Date();
 	format(time, 'pp');
 	const formattedTime = time.toLocaleTimeString();
@@ -20,7 +27,7 @@ const AddProducts = () => {
 		const product = {
 			productsName: data.productName,
 			picture: data.picture,
-			orginalPrice: data.orginalPrice,
+			originalPrice: data.originalPrice,
 			resellPrice: data.resellPrice,
 			mobileNumber: data.mobileNumber,
 			location: data.location,
@@ -28,6 +35,7 @@ const AddProducts = () => {
 			yearsUsed: data.yearsUsed,
 			postedTime: formattedTime,
 			userName: user?.displayName,
+			description: data.description,
 		};
 
 		console.log(product);
@@ -65,14 +73,14 @@ const AddProducts = () => {
 							</div>
 
 							<div className="col-span-full sm:col-span-2">
-								<label className="block mb-2 text-sm">Product Orginal Price</label>
+								<label className="block mb-2 text-sm">Product Original Price</label>
 								<input
 									type="number"
-									{...register('orginalPrice', { required: 'Product Orginal Price is required' })}
+									{...register('originalPrice', { required: 'Product Original Price is required' })}
 									className="w-full input-primary px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
 								/>
-								{errors.orginalPrice && (
-									<p className="text-red-600">{errors.orginalPrice?.message}</p>
+								{errors.originalPrice && (
+									<p className="text-red-600">{errors.originalPrice?.message}</p>
 								)}
 							</div>
 
@@ -80,7 +88,7 @@ const AddProducts = () => {
 								<label className="block mb-2 text-sm">Product Resell Price</label>
 								<input
 									type="number"
-									{...register('resellPrice', { required: 'Product Orginal Price is required' })}
+									{...register('resellPrice', { required: 'Product Original Price is required' })}
 									className="w-full input-primary px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
 								/>
 								{errors.resellPrice && (
@@ -93,7 +101,7 @@ const AddProducts = () => {
 								<select
 									{...register('condition', { required: 'Product condition must be selected' })}
 									defaultValue={'excellent'}
-									className="select select-primary w-full input-primary px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
+									className="select select-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
 									<option>Excellent</option>
 									<option>Good</option>
 									<option>Fair</option>
@@ -132,6 +140,35 @@ const AddProducts = () => {
 								/>
 								{errors.yearsUsed && <p className="text-red-600">{errors.yearsUsed?.message}</p>}
 							</div>
+
+							<div className="col-span-full sm:col-span-3">
+								<label className="block mb-2 text-sm">Description</label>
+
+								<textarea
+									{...register('description', { required: 'Description is required' })}
+									className="textarea textarea-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"></textarea>
+								{errors.description && (
+									<p className="text-red-600">{errors.description?.message}</p>
+								)}
+							</div>
+							{/* <div className="col-span-full sm:col-span-3">
+								<label className="block mb-2 text-sm">Description</label>
+
+								<select
+									{...register('condition', { required: 'Product condition must be selected' })}
+									defaultValue={'excellent'}
+									className="select select-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
+									{categories.map((category) => {
+										// setCategoryId(category.id);
+										return <option value={category.title}>{category.title}</option>;
+									})}
+
+									
+								</select>
+								{errors.description && (
+									<p className="text-red-600">{errors.description?.message}</p>
+								)}
+							</div> */}
 						</div>
 
 						<div className="space-y-2">

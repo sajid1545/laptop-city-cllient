@@ -41,10 +41,10 @@ const DashboardLayout = () => {
 						</div>
 						<div className="divider"></div>
 
-						{!isSeller && !isAdmin && (
+						{isSeller && (
 							<>
 								<li>
-									<Link to={'/dashboard/addProducts'}>My Orders</Link>
+									<Link to={'/dashboard/myOrders'}>My Orders</Link>
 								</li>
 							</>
 						)}
@@ -55,14 +55,24 @@ const DashboardLayout = () => {
 									<Link to={'/dashboard/addProducts'}>Add a Product</Link>
 								</li>
 								<li>
-									<Link to={'/dashboard/addProducts'}>My Products</Link>
+									<Link to={'/dashboard/myProducts'}>My Products</Link>
 								</li>
 							</>
 						)}
 
-						<li>
-							<a>Sidebar Item 2</a>
-						</li>
+						{isAdmin && (
+							<>
+								<li>
+									<Link to={'/dashboard/allSellers'}>All sellers</Link>
+								</li>
+								<li>
+									<Link to={'/dashboard/allBuyers'}>All buyers</Link>
+								</li>
+								<li>
+									<Link to={'/dashboard/reportedItems'}>Reported Items</Link>
+								</li>
+							</>
+						)}
 					</ul>
 				</div>
 			</div>
