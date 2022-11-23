@@ -13,7 +13,7 @@ const CategoriesCard = ({ category }) => {
 			<div className="card-body flex justify-center items-center h-full">
 				<h2 className="card-title font-bold text-6xl">{title}</h2>
 				<Link to={`/category/${_id}`}>
-					<button class="px-12 py-3 btn-primary rounded hover:btn-outline mt-5">Details</button>
+					<button className="px-12 py-3 btn-primary rounded hover:btn-outline mt-5">Details</button>
 				</Link>
 			</div>
 		</div>
