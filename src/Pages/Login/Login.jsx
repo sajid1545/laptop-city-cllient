@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
+import setAuthToken from '../../API/auth';
 
 const Login = () => {
+	const { signIn, googleSignIn } = useContext(AuthContext);
 	const [loginError, setLoginError] = useState('');
 
 	const {
@@ -12,11 +16,39 @@ const Login = () => {
 	} = useForm();
 
 	const handleLogin = (data) => {
+		setLoginError('');
 		console.log(data);
+		signIn(data.email, data.password)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success('Login Successful');
+			})
+			.catch((err) => {
+				setLoginError(err.message);
+			});
+	};
+
+	// login with google
+
+	const handleGoogleSignIn = () => {
+		googleSignIn()
+			.then((result) => {
+				const user = result.user;
+				const userInfo = {
+					name: user?.displayName,
+					email: user?.email,
+				};
+				setAuthToken(userInfo);
+				toast.success('login success');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
-		<div>
+		<div className="flex items-center justify-center h-screen">
 			<div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
 				<h1 className="text-2xl font-bold text-center">Login</h1>
 				<form onSubmit={handleSubmit(handleLogin)} className="space-y-6 ">
@@ -44,13 +76,17 @@ const Login = () => {
 						Sign in
 					</button>
 				</form>
+				<p className="text-red-700 font-bold text-center">{loginError}</p>
+
 				<div className="flex items-center pt-4 space-x-1">
 					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
 					<p className="px-3 text-sm dark:text-gray-400">Login with social accounts</p>
 					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
 				</div>
 				<div className="flex justify-center space-x-4">
-					<button className="p-3 rounded-sm hover:text-blue-600 duration-500">
+					<button
+						onClick={handleGoogleSignIn}
+						className="p-3 rounded-sm hover:text-blue-600 duration-500">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 32 32"
