@@ -11,8 +11,12 @@ const Navbar = () => {
 			<li>
 				<Link to="/">Blogs</Link>
 			</li>
+
 			<li>
 				<Link to="/">Dashboard</Link>
+			</li>
+			<li>
+				<Link to="/login">Login</Link>
 			</li>
 		</React.Fragment>
 	);

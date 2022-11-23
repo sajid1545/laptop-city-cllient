@@ -1,17 +1,17 @@
 [
 	{
-		"id": "A",
+		"id": "1",
 		"title": "Asus",
-		"picture": "http://placehold.it/32x32"
+		"picture": "https://i.ibb.co/j41ymH7/asus.jpg"
 	},
 	{
-		"id": "B",
-		"title": "Dell",
-		"picture": "http://placehold.it/32x32"
+		"id": "2",
+		"title": "Apple",
+		"picture": "https://i.ibb.co/48CzLNn/apple.png"
 	},
 	{
-		"id": "C",
+		"id": "3",
 		"title": "Lenovo",
-		"picture": "http://placehold.it/32x32"
+		"picture": "https://i.ibb.co/fvdSpww/lenovo.jpg"
 	}
 ]
