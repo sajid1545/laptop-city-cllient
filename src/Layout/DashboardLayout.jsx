@@ -1,10 +1,16 @@
 import React, { useContext } from 'react';
 import { Link, Outlet, ScrollRestoration } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
+import useAdmin from '../Hooks/useAdmin';
+import useSeller from '../Hooks/useSeller';
 import Navbar from './../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
 	const { user } = useContext(AuthContext);
+
+	const [isSeller] = useSeller(user?.email);
+
+	const [isAdmin] = useAdmin(user?.email);
 
 	return (
 		<div>
@@ -34,9 +40,26 @@ const DashboardLayout = () => {
 							</p>
 						</div>
 						<div className="divider"></div>
-						<li>
-							<Link to={'/dashboard/addProducts'}>Add Products</Link>
-						</li>
+
+						{!isSeller && !isAdmin && (
+							<>
+								<li>
+									<Link to={'/dashboard/addProducts'}>My Orders</Link>
+								</li>
+							</>
+						)}
+
+						{isSeller && (
+							<>
+								<li>
+									<Link to={'/dashboard/addProducts'}>Add a Product</Link>
+								</li>
+								<li>
+									<Link to={'/dashboard/addProducts'}>My Products</Link>
+								</li>
+							</>
+						)}
+
 						<li>
 							<a>Sidebar Item 2</a>
 						</li>
