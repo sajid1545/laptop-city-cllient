@@ -19,7 +19,7 @@
     opacity: 0.75;
 }
 
-h1 {
+.banner-heading {
     position: relative;
     color: #ffffff;
     /* font-size: 14rem; */
