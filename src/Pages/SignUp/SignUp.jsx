@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import setAuthToken from '../../API/auth';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
-	const [signupError, setsignupError] = useState('');
+	const [signupError, setSignupError] = useState('');
+
+	const { createUser, updateUserProfile } = useContext(AuthContext);
 
 	const {
 		register,
@@ -13,6 +18,25 @@ const SignUp = () => {
 
 	const handleSignup = (data) => {
 		console.log(data);
+		createUser(data.email, data.password).then((result) => {
+			const user = result.user;
+			toast.success('registered successfully');
+
+			const userInfo = {
+				name: data.name,
+				email: user?.email,
+				role: data?.userStatus,
+			};
+
+			updateUserProfile(data.name, data.photoUrl)
+				.then(() => {
+					setAuthToken(userInfo);
+				})
+				.catch((err) => {
+					console.log(err);
+					setSignupError(err.message);
+				});
+		});
 	};
 
 	return (
