@@ -1,0 +1,17 @@
+[
+	{
+		"id": "A",
+		"title": "Asus",
+		"picture": "http://placehold.it/32x32"
+	},
+	{
+		"id": "B",
+		"title": "Dell",
+		"picture": "http://placehold.it/32x32"
+	},
+	{
+		"id": "C",
+		"title": "Lenovo",
+		"picture": "http://placehold.it/32x32"
+	}
+]
