@@ -4,10 +4,11 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import setAuthToken from '../../API/auth';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import SmallSpinner from '../Shared/Spinners/SmallSpinner';
 
 const SignUp = () => {
 	const [signupError, setSignupError] = useState('');
-
+	const [load, setLoad] = useState(false);
 	const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
 
 	const {
@@ -21,7 +22,7 @@ const SignUp = () => {
 
 	const handleSignup = (data) => {
 		setSignupError('');
-		console.log(data);
+		setLoad(true);
 		createUser(data.email, data.password)
 			.then((result) => {
 				const user = result.user;
@@ -41,9 +42,11 @@ const SignUp = () => {
 					.catch((err) => {
 						setSignupError(err.message);
 					});
+				setLoad(false);
 			})
 			.catch((err) => {
 				setSignupError(err.message);
+				setLoad(false);
 			});
 	};
 
@@ -56,9 +59,11 @@ const SignUp = () => {
 				const userInfo = {
 					name: user?.displayName,
 					email: user?.email,
+					role: 'user',
 				};
 				setAuthToken(userInfo);
 				toast.success('Sign up success');
+				navigate('/');
 			})
 			.catch((err) => {
 				console.log(err);
@@ -118,9 +123,14 @@ const SignUp = () => {
 						/>
 						{errors.password && <p className="text-red-600">{errors.password?.message}</p>}
 					</div>
-					<button className="block w-full p-3 text-center rounded-sm text-white duration-500 btn-primary">
-						Sign up
-					</button>
+
+					{load ? (
+						<SmallSpinner />
+					) : (
+						<button className="block w-full p-3 text-center rounded-sm text-white duration-500 btn-primary">
+							Sign up
+						</button>
+					)}
 				</form>
 				<p className="text-red-700 font-bold text-center">{signupError}</p>
 				<div className="flex items-center pt-4 space-x-1">

@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import setAuthToken from '../../API/auth';
+import SmallSpinner from '../Shared/Spinners/SmallSpinner';
 
 const Login = () => {
 	const { signIn, googleSignIn } = useContext(AuthContext);
 	const [loginError, setLoginError] = useState('');
+	const [load, setLoad] = useState(false);
 
 	const {
 		register,
@@ -15,17 +17,31 @@ const Login = () => {
 		handleSubmit,
 	} = useForm();
 
+	const location = useLocation();
+	const navigate = useNavigate();
+	let from = location.state?.from?.pathname || '/';
+
 	const handleLogin = (data) => {
 		setLoginError('');
 		console.log(data);
+		setLoad(true);
 		signIn(data.email, data.password)
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
+				const userInfo = {
+					name: user?.displayName,
+					email: user?.email,
+				};
+				setAuthToken(userInfo);
 				toast.success('Login Successful');
+				navigate(from, { replace: true });
+				setLoad(false);
 			})
 			.catch((err) => {
 				setLoginError(err.message);
+				setLoad(false);
+
 			});
 	};
 
@@ -38,14 +54,20 @@ const Login = () => {
 				const userInfo = {
 					name: user?.displayName,
 					email: user?.email,
+					role: 'user',
 				};
 				setAuthToken(userInfo);
 				toast.success('login success');
+				navigate(from, { replace: true });
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
+
+	// if (load) {
+	// 	return <SmallSpinner />;
+	// }
 
 	return (
 		<div className="flex items-center justify-center h-screen">
@@ -72,9 +94,14 @@ const Login = () => {
 						/>
 						{errors.password && <p className="text-red-600">{errors.password?.message}</p>}
 					</div>
-					<button className="block w-full p-3 text-center rounded-sm text-white duration-500 btn-primary">
-						Sign in
-					</button>
+
+					{load ? (
+						<SmallSpinner />
+					) : (
+						<button className="block w-full p-3 text-center rounded-sm text-white duration-500 btn-primary">
+							Sign in
+						</button>
+					)}
 				</form>
 				<p className="text-red-700 font-bold text-center">{loginError}</p>
 
