@@ -38,6 +38,17 @@ const DashboardLayout = () => {
 							<p className="divide-y-8 mx-2 mt-1 text-sm font-medium text-black  hover:underline">
 								{user?.email}
 							</p>
+
+							{isAdmin && (
+								<span className="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
+									Admin
+								</span>
+							)}
+							{isSeller && (
+								<span className="px-8 mt-5 py-1  text-base rounded-full text-green-600  bg-green-200 ">
+									Seller
+								</span>
+							)}
 						</div>
 						<div className="divider"></div>
 

@@ -19,13 +19,16 @@ const CategorizedProducts = () => {
 			<h1 className="text-5xl text-center font-bold">Choose your desired Laptops </h1>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10 place-items-center">
-				{products.map((product) => (
-					<CategorizedProductCard
-						key={product._id}
-						product={product}
-						setPurchaseProduct={setPurchaseProduct}
-					/>
-				))}
+				{products.map(
+					(product) =>
+						!product.paid && (
+							<CategorizedProductCard
+								key={product._id}
+								product={product}
+								setPurchaseProduct={setPurchaseProduct}
+							/>
+						)
+				)}
 			</div>
 
 			{purchaseProduct !== null && (
