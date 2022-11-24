@@ -64,7 +64,7 @@ const MyOrders = () => {
 
 								{
 									product.paid && 
-									<p className='text-green font-bold'>Paid</p>
+									<p className='text-green-700 text-2xl mt-7  font-extrabold'>Paid</p>
 								}
 							</tr>
 						))}
