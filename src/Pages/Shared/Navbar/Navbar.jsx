@@ -23,7 +23,7 @@ const Navbar = () => {
 					<li>
 						<button
 							onClick={logOut}
-							className="inline-block rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+							className="inline-block rounded border border-[#20609B] bg-[#20609B] px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
 							LogOut
 						</button>
 					</li>

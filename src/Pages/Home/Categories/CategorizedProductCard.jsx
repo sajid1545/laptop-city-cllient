@@ -15,16 +15,17 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 		postedTime,
 		userName,
 		description,
+		userPhoto
 	} = product;
 
 	return (
 		<div>
-			<div className="max-w-lg space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
+			<div className="max-w-lg h-[800px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
 				<div className="flex space-x-4 items-center justify-between">
 					<div className="flex items-center gap-3">
 						<img
 							alt=""
-							src={user?.photoURL}
+							src={userPhoto}
 							className="object-cover w-12 h-12 rounded-full shadow bg-gray-500"
 						/>
 						<div className="flex flex-col space-y-1">
@@ -78,11 +79,11 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 						</div>
 						<p className="leading-snug text-gray-400">{description}</p>
 
-						<div>
+						<div className='relative'>
 							<label
 								htmlFor="purchase-modal"
 								onClick={() => setPurchaseProduct(product)}
-								className="w-2/4 text-center mt-10 block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer">
+								className="w-2/4 text-center mt-10 block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer ">
 								Purchase Now
 							</label>
 						</div>

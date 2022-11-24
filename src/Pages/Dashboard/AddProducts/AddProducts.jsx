@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProducts = () => {
 	const {
@@ -13,6 +14,7 @@ const AddProducts = () => {
 	} = useForm();
 
 	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 
 	const { data: categories = [] } = useQuery({
 		queryKey: ['categories'],
@@ -42,6 +44,8 @@ const AddProducts = () => {
 			description: data.description,
 			category: data.category,
 			categoryId: categoryId,
+			userEmail: user?.email,
+			userPhoto: user?.photURL,
 		};
 		console.log(product);
 		fetch(`http://localhost:5000/products`, {
@@ -56,6 +60,7 @@ const AddProducts = () => {
 				console.log(data);
 				if (data.acknowledged) {
 					toast.success(`product added successfully`);
+					navigate('/dashboard/myProducts');
 				}
 			});
 	};

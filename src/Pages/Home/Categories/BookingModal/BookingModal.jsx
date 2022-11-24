@@ -1,20 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 	const { user } = useContext(AuthContext);
-	const {
-		productsName,
-		picture,
-		originalPrice,
-		resellPrice,
-		location,
-		productCondition,
-		yearsUsed,
-		postedTime,
-		userName,
-		description,
-	} = purchaseProduct;
+	const { productsName, picture, resellPrice } = purchaseProduct;
 
 	const handlePurchase = (event) => {
 		event.preventDefault();
@@ -27,10 +17,24 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 			price: form.resellPrice.value,
 			phone: form.phoneNumber.value,
 			meetingLocation: form.meetingLocation.value,
+			picture: picture,
 		};
 
 		console.log(purchase);
-		setPurchaseProduct(null);
+		fetch('http://localhost:5000/book-product', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json',
+			},
+			body: JSON.stringify(purchase),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.acknowledged) {
+					setPurchaseProduct(null);
+					toast.success('Product booked successfully');
+				}
+			});
 	};
 
 	return (
@@ -86,16 +90,11 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 
 						<input
 							type="submit"
-							value="Purchase"
+							value="Book Now"
 							// onClick={() => setPurchaseProduct(null)}
 							className="w-full block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 						/>
 					</form>
-					<div className="modal-action">
-						<label htmlFor="purchase-modal" className="btn">
-							Yay!
-						</label>
-					</div>
 				</div>
 			</div>
 		</div>

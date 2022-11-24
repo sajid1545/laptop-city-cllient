@@ -63,6 +63,7 @@ const SignUp = () => {
 				};
 				setAuthToken(userInfo);
 				toast.success('Sign up success');
+				// window.location.reload();
 				navigate('/');
 			})
 			.catch((err) => {

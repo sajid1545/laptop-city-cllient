@@ -41,7 +41,7 @@ const DashboardLayout = () => {
 						</div>
 						<div className="divider"></div>
 
-						{!isSeller && (
+						{!isSeller && !isAdmin && (
 							<>
 								<li>
 									<Link to={'/dashboard/myOrders'}>My Orders</Link>
