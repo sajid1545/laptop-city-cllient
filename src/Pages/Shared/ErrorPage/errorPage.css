@@ -1,18 +1,13 @@
-.error-page {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.error-page::before {
-    content: "";
+.errorPage {
     background-image: url('../../../Assets/Images/ErrorPage.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.error-page::before {
+    content: "";
+
     position: absolute;
     top: 0px;
     right: 0px;

@@ -28,6 +28,7 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 			},
 			body: JSON.stringify(purchase),
 		})

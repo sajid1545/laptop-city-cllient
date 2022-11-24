@@ -48,6 +48,9 @@ const MyProducts = () => {
 		console.log(product);
 		fetch(`http://localhost:5000/display-home-product/${product._id}`, {
 			method: 'PUT',
+			headers: {
+				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+			},
 		})
 			.then((res) => res.json())
 			.then((data) => {
@@ -71,8 +74,9 @@ const MyProducts = () => {
 							<th>Picture</th>
 							<th>Product Name</th>
 							<th>Price</th>
-							<th>Action</th>
 							<th>Advertise</th>
+							<th>Sold</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -88,13 +92,7 @@ const MyProducts = () => {
 								</td>
 								<td>{product.productsName}</td>
 								<td>{product.resellPrice}</td>
-								<td>
-									<button
-										onClick={() => handleDeleteProduct(product)}
-										className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
-										Delete
-									</button>
-								</td>
+								
 
 								<td>
 									{!product.paid && !product.productStatus && (
@@ -108,6 +106,16 @@ const MyProducts = () => {
 									{product.productStatus && (
 										<p className="text-green-700 font-extrabold text-xl">Advertised</p>
 									)}
+								</td>
+								<td>
+									{product.paid && <p className="text-green-700 font-extrabold text-xl">Sold</p>}
+								</td>
+								<td>
+									<button
+										onClick={() => handleDeleteProduct(product)}
+										className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
+										Delete
+									</button>
 								</td>
 							</tr>
 						))}

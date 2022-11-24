@@ -6,9 +6,15 @@ const Categories = () => {
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
-		axios.get(`http://localhost:5000/categories`).then((res) => {
-			setCategories(res.data);
-		});
+		axios
+			.get(`http://localhost:5000/categories`, {
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+				},
+			})
+			.then((res) => {
+				setCategories(res.data);
+			});
 	}, []);
 
 	return (

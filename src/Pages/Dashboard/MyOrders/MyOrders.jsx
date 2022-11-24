@@ -6,10 +6,18 @@ import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 
 const MyOrders = () => {
 	const { user } = useContext(AuthContext);
-	const { data: bookedProducts = [], isLoading,refetch } = useQuery({
+	const {
+		data: bookedProducts = [],
+		isLoading,
+		refetch,
+	} = useQuery({
 		queryKey: ['bookedProducts', user?.email],
 		queryFn: () =>
-			fetch(`http://localhost:5000/book-product?email=${user?.email}`).then((res) => res.json()),
+			fetch(`http://localhost:5000/book-product?email=${user?.email}`, {
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+				},
+			}).then((res) => res.json()),
 	});
 
 	if (isLoading) {
@@ -62,10 +70,9 @@ const MyOrders = () => {
 									</td>
 								)}
 
-								{
-									product.paid && 
-									<p className='text-green-700 text-2xl mt-7  font-extrabold'>Paid</p>
-								}
+								{product.paid && (
+									<p className="text-green-700 text-2xl mt-7  font-extrabold">Paid</p>
+								)}
 							</tr>
 						))}
 					</tbody>

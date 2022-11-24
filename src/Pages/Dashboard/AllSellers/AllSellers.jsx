@@ -5,7 +5,12 @@ import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 const AllSellers = () => {
 	const { data: allSellers = [], isLoading } = useQuery({
 		queryKey: ['allSellers'],
-		queryFn: () => fetch('http://localhost:5000/all-sellers').then((res) => res.json()),
+		queryFn: () =>
+			fetch('http://localhost:5000/all-sellers', {
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+				},
+			}).then((res) => res.json()),
 	});
 
 	if (isLoading) {
@@ -13,8 +18,8 @@ const AllSellers = () => {
 	}
 
 	return (
-        <div>
-            <h1 className='text-4xl text-center font-bold' >All Sellers</h1>
+		<div>
+			<h1 className="text-4xl text-center font-bold">All Sellers</h1>
 			<div className="overflow-x-auto w-[85%] mx-auto mt-5">
 				<table className="table w-full">
 					<thead>

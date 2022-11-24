@@ -18,7 +18,12 @@ const AddProducts = () => {
 
 	const { data: categories = [] } = useQuery({
 		queryKey: ['categories'],
-		queryFn: () => fetch(`http://localhost:5000/categories`).then((res) => res.json()),
+		queryFn: () =>
+			fetch(`http://localhost:5000/categories`, {
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+				},
+			}).then((res) => res.json()),
 	});
 
 	const time = new Date();
@@ -52,6 +57,7 @@ const AddProducts = () => {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
+				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 			},
 			body: JSON.stringify(product),
 		})
