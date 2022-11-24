@@ -4,7 +4,7 @@ import { PacmanLoader } from 'react-spinners';
 const LargeSpinner = () => {
 	return (
 		<div className="flex justify-center items-center h-screen">
-			<PacmanLoader color="#6419E6" />
+			<PacmanLoader color="#6419E6"   size={70} />
 		</div>
 	);
 };

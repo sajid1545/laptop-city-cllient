@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
-const CategorizedProductCard = ({ product }) => {
+const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 	const { user } = useContext(AuthContext);
 
 	const {
@@ -49,10 +49,6 @@ const CategorizedProductCard = ({ product }) => {
 								{productCondition}
 							</span>
 						)}
-
-						{/* <span class="px-4 py-2  text-base rounded-full text-red-600 border border-red-600 bg-red-200 ">
-							Hello
-						</span> */}
 					</div>
 				</div>
 				<div className="space-y-4">
@@ -83,9 +79,12 @@ const CategorizedProductCard = ({ product }) => {
 						<p className="leading-snug text-gray-400">{description}</p>
 
 						<div>
-							<button className="px-14 py-3 mt-5 duration-300 block mx-auto btn-primary rounded-lg">
-								Book Now
-							</button>
+							<label
+								htmlFor="purchase-modal"
+								onClick={() => setPurchaseProduct(product)}
+								className="w-2/4 text-center mt-10 block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer">
+								Purchase Now
+							</label>
 						</div>
 					</div>
 				</div>
