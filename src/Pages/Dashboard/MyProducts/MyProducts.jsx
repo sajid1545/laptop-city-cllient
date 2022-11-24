@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
-import { toast } from 'react-hot-toast';
 
 const MyProducts = () => {
 	const { user } = useContext(AuthContext);
@@ -12,7 +12,7 @@ const MyProducts = () => {
 		isLoading,
 		refetch,
 	} = useQuery({
-		queryKey: ['sellerProducts'],
+		queryKey: ['sellerProducts', user?.email],
 		queryFn: () =>
 			fetch(`http://localhost:5000/seller-products?email=${user?.email}`, {
 				headers: {
@@ -25,16 +25,35 @@ const MyProducts = () => {
 		return <LargeSpinner />;
 	}
 
+	// deleting product
 	const handleDeleteProduct = (product) => {
 		fetch(`http://localhost:5000/seller-products/${product._id}`, {
 			method: 'DELETE',
+			headers: {
+				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+			},
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
 				if (data.deletedCount > 0) {
 					toast.success('Delete product successfully');
+					refetch();
+				}
+			});
+	};
 
+	// handle advertisement
+	const handleAdvertise = (product) => {
+		console.log(product);
+		fetch(`http://localhost:5000/display-home-product/${product._id}`, {
+			method: 'PUT',
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				if (data.modifiedCount > 0) {
+					toast.success(`${product.productsName} is successfully advertised`);
 					refetch();
 				}
 			});
@@ -53,6 +72,7 @@ const MyProducts = () => {
 							<th>Product Name</th>
 							<th>Price</th>
 							<th>Action</th>
+							<th>Advertise</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -69,16 +89,24 @@ const MyProducts = () => {
 								<td>{product.productsName}</td>
 								<td>{product.resellPrice}</td>
 								<td>
-									{product.paid ? (
+									<button
+										onClick={() => handleDeleteProduct(product)}
+										className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
+										Delete
+									</button>
+								</td>
+
+								<td>
+									{!product.paid && !product.productStatus && (
 										<button
-											onClick={() => handleDeleteProduct(product)}
-											className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
-											Delete
-										</button>
-									) : (
-										<button className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+											onClick={() => handleAdvertise(product)}
+											className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
 											Advertise
 										</button>
+									)}
+
+									{product.productStatus && (
+										<p className="text-green-700 font-extrabold text-xl">Advertised</p>
 									)}
 								</td>
 							</tr>

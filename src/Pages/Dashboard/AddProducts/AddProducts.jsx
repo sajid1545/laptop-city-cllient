@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { format } from 'date-fns';
-import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
+import { format } from 'date-fns';
+import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddProducts = () => {
 	const {
@@ -45,7 +45,7 @@ const AddProducts = () => {
 			category: data.category,
 			categoryId: categoryId,
 			userEmail: user?.email,
-			userPhoto: user?.photURL,
+			userPhoto: user?.photoURL,
 		};
 		console.log(product);
 		fetch(`http://localhost:5000/products`, {
