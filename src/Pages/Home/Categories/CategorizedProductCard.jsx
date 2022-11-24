@@ -36,17 +36,17 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 
 					<div>
 						{productCondition === 'Good' && (
-							<span class="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
+							<span className="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
 								{productCondition}
 							</span>
 						)}
 						{productCondition === 'Excellent' && (
-							<span class="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
+							<span className="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
 								{productCondition}
 							</span>
 						)}
 						{productCondition === 'Fair' && (
-							<span class="px-4 py-2  text-base rounded-full text-yellow-600  bg-yellow-200 ">
+							<span className="px-4 py-2  text-base rounded-full text-yellow-600  bg-yellow-200 ">
 								{productCondition}
 							</span>
 						)}
