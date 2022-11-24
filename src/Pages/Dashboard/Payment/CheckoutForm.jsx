@@ -95,6 +95,7 @@ const CheckoutForm = ({ product }) => {
 					if (data.acknowledged) {
 						toast.success('Payment Successful');
 						setLoad(false);
+						
 					}
 				});
 		}
