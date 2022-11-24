@@ -17,11 +17,16 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 		description,
 		userPhoto,
 		paid,
+		_id
 	} = product;
+
+	const handleReportToAdmin = (product) => {
+		console.log(product);
+	}
 
 	return (
 		<div>
-			<div className="max-w-lg h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
+			<div className="max-w-xl h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
 				<div className="flex space-x-4 items-center justify-between">
 					<div className="flex items-center gap-3">
 						<img
@@ -35,22 +40,10 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 						</div>
 					</div>
 
-					<div>
-						{productCondition === 'Good' && (
-							<span className="px-4 py-2  text-base rounded-full text-green-300  bg-green-500 ">
-								{productCondition}
-							</span>
-						)}
-						{productCondition === 'Excellent' && (
-							<span className="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
-								{productCondition}
-							</span>
-						)}
-						{productCondition === 'Fair' && (
-							<span className="px-4 py-2  text-base rounded-full text-yellow-600  bg-yellow-200 ">
-								{productCondition}
-							</span>
-						)}
+					<div className="flex ">
+						<button onClick={()=> handleReportToAdmin(product)} className="py-2 px-4  bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500 focus:ring-offset-yellow-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+							Report To Admin
+						</button>
 					</div>
 				</div>
 				<div className="space-y-4">
@@ -65,9 +58,25 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 						<div className="block mb-7">
 							<h3 className="text-xl font-semibold text-violet-500">{productsName}</h3>
 						</div>
-
+						<div className="my-3">
+							{productCondition === 'Good' && (
+								<span className="px-4 py-2  text-base rounded-full text-green-300  bg-green-500 ">
+									{productCondition}
+								</span>
+							)}
+							{productCondition === 'Excellent' && (
+								<span className="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 ">
+									{productCondition}
+								</span>
+							)}
+							{productCondition === 'Fair' && (
+								<span className="px-4 py-2  text-base rounded-full text-yellow-600  bg-yellow-200 ">
+									{productCondition}
+								</span>
+							)}
+						</div>
 						<div className="">
-							<div className="flex gap-5 text-yellow-500 text-md">
+							<div className="flex gap-5 text-yellow-500 text-md mt-5">
 								<h3>
 									Resell Price : <span className=""> ৳ {resellPrice}</span>
 								</h3>

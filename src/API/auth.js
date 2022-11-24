@@ -9,6 +9,7 @@ const setAuthToken = (user) => {
 		method: 'PUT',
 		headers: {
 			'content-type': 'application/json',
+			
 		},
 		body: JSON.stringify(currentUser),
 	})

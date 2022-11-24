@@ -21,7 +21,7 @@ const Advertisement = () => {
 						{advertisements.map(
 							(advertise) =>
 								advertise.productStatus &&
-								!advertise.paid && <AdvertisementCard advertise={advertise} />
+								!advertise.paid && <AdvertisementCard key={advertise._id} advertise={advertise} />
 						)}
 					</div>
 				</>
