@@ -6,7 +6,7 @@ import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 
 const MyOrders = () => {
 	const { user } = useContext(AuthContext);
-	const { data: bookedProducts = [], isLoading } = useQuery({
+	const { data: bookedProducts = [], isLoading,refetch } = useQuery({
 		queryKey: ['bookedProducts', user?.email],
 		queryFn: () =>
 			fetch(`http://localhost:5000/book-product?email=${user?.email}`).then((res) => res.json()),

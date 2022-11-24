@@ -11,6 +11,7 @@ import MyOrders from '../../Pages/Dashboard/MyOrders/MyOrders';
 import SellerRoute from '../SellerRoute/SellerRoute';
 import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts';
 import Payment from '../../Pages/Dashboard/Payment/Payment';
+import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
 
 export const router = createBrowserRouter([
 	{
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
 			</PrivateRoute>
 		),
 		children: [
+			{
+				path: '/dashboard',
+				element: <Dashboard />,
+			},
 			{
 				path: '/dashboard/myOrders',
 				element: <MyOrders />,

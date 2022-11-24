@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
 
 const MyProducts = () => {
 	const { user } = useContext(AuthContext);
@@ -15,9 +16,13 @@ const MyProducts = () => {
 			}).then((res) => res.json()),
 	});
 
+	if (isLoading) {
+		return <LargeSpinner />;
+	}
+
 	return (
 		<div>
-			<h1 className='text-4xl text-center font-bold mb-5'>My Added products</h1>
+			<h1 className="text-4xl text-center font-bold mb-5">My Added products</h1>
 
 			<div className="overflow-x-auto">
 				<table className="table w-[85%] mx-auto">
@@ -36,7 +41,7 @@ const MyProducts = () => {
 								<td>
 									<div className="avatar">
 										<div className="w-24 rounded-full">
-                                            <img src={ product.picture } alt='product' />
+											<img src={product.picture} alt="product" />
 										</div>
 									</div>
 								</td>

@@ -4,9 +4,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 
-const stripePromise = loadStripe(
-	'pk_test_51M5sZMJ1bKgZ3xnxaq4XegoVudlloIegfR5oeqRyH6kHD3yLWPSWczbtH6cBqfZdYoBGNJMSTHms93nyfVT4UnxO00n0GZiWLJ'
-);
+const stripePromise = loadStripe(process.env.REACT_APP_PK_STRIPE);
 
 const Payment = () => {
 	const product = useLoaderData();
@@ -24,9 +22,9 @@ const Payment = () => {
 				</h1>
 			</div>
 
-			<div className='my-20'>
+			<div className="my-20">
 				<Elements stripe={stripePromise}>
-					<CheckoutForm />
+					<CheckoutForm product={product} />
 				</Elements>
 			</div>
 		</div>
