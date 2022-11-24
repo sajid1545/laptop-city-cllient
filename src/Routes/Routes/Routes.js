@@ -16,11 +16,13 @@ import AdminRoute from './../AdminRoute/AdminRoute';
 import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
 import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
 import ReportedProducts from '../../Pages/Dashboard/ReportedProducts/ReportedProducts';
+import ErrorPage from './../../Pages/Shared/ErrorPage/ErrorPage';
 
 export const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Main />,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: '/',
@@ -53,6 +55,7 @@ export const router = createBrowserRouter([
 				<DashboardLayout />
 			</PrivateRoute>
 		),
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: '/dashboard',

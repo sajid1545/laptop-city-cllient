@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import setAuthToken from '../../API/auth';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import SmallSpinner from '../Shared/Spinners/SmallSpinner';
+import './signUp.css';
 
 const SignUp = () => {
 	const [signupError, setSignupError] = useState('');
@@ -72,7 +73,7 @@ const SignUp = () => {
 	};
 
 	return (
-		<div className="mt-5">
+		<div className="mt-5 signUp-form">
 			<div className="w-full max-w-lg mx-auto p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
 				<h1 className="text-2xl font-bold text-center">Sign Up</h1>
 				<form onSubmit={handleSubmit(handleSignup)} className="space-y-6 ">
