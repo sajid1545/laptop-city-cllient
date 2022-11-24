@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { format } from 'date-fns';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-hot-toast';
 
 const AddProducts = () => {
 	const {
@@ -18,12 +19,15 @@ const AddProducts = () => {
 		queryFn: () => fetch(`http://localhost:5000/categories`).then((res) => res.json()),
 	});
 
-
 	const time = new Date();
 	format(time, 'pp');
 	const formattedTime = time.toLocaleTimeString();
 
 	const handleAddProduct = (data) => {
+		const category = categories.find((category) => category.title === data.category);
+
+		const categoryId = category._id;
+
 		const product = {
 			productsName: data.productName,
 			picture: data.picture,
@@ -32,13 +36,28 @@ const AddProducts = () => {
 			mobileNumber: data.mobileNumber,
 			location: data.location,
 			productCondition: data.condition,
-			yearsUsed: data.yearsUsed,
+			yearsUsed: parseFloat(data.yearsUsed),
 			postedTime: formattedTime,
 			userName: user?.displayName,
 			description: data.description,
+			category: data.category,
+			categoryId: categoryId,
 		};
-
 		console.log(product);
+		fetch(`http://localhost:5000/products`, {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json',
+			},
+			body: JSON.stringify(product),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				if (data.acknowledged) {
+					toast.success(`product added successfully`);
+				}
+			});
 	};
 
 	return (
@@ -100,7 +119,6 @@ const AddProducts = () => {
 								<label className="block mb-2 text-sm">Product Condition</label>
 								<select
 									{...register('condition', { required: 'Product condition must be selected' })}
-									defaultValue={'excellent'}
 									className="select select-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
 									<option>Excellent</option>
 									<option>Good</option>
@@ -134,7 +152,7 @@ const AddProducts = () => {
 							<div className="col-span-full sm:col-span-2">
 								<label className="block mb-2 text-sm">Years Used</label>
 								<input
-									type="number"
+									type="text"
 									{...register('yearsUsed', { required: 'Years Used is required' })}
 									className="w-full input-primary px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
 								/>
@@ -151,24 +169,22 @@ const AddProducts = () => {
 									<p className="text-red-600">{errors.description?.message}</p>
 								)}
 							</div>
-							{/* <div className="col-span-full sm:col-span-3">
-								<label className="block mb-2 text-sm">Description</label>
+							<div className="col-span-full sm:col-span-3">
+								<label className="block mb-2 text-sm">Categories</label>
 
 								<select
-									{...register('condition', { required: 'Product condition must be selected' })}
-									defaultValue={'excellent'}
+									{...register('category', { required: 'Category is required' })}
 									className="select select-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
 									{categories.map((category) => {
 										// setCategoryId(category.id);
-										return <option value={category.title}>{category.title}</option>;
+										return (
+											<option key={category._id} value={category.title}>
+												{category.title}
+											</option>
+										);
 									})}
-
-									
 								</select>
-								{errors.description && (
-									<p className="text-red-600">{errors.description?.message}</p>
-								)}
-							</div> */}
+							</div>
 						</div>
 
 						<div className="space-y-2">
