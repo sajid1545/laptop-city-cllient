@@ -16,13 +16,12 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.75;
+    opacity: 0.7;
 }
 
 .banner-heading {
     position: relative;
     color: #ffffff;
-    /* font-size: 14rem; */
     line-height: 0.9;
     text-align: center;
 }
