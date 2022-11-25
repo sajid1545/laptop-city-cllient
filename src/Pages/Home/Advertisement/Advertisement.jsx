@@ -6,7 +6,7 @@ const Advertisement = () => {
 	const { data: advertisements = [], isLoading } = useQuery({
 		queryKey: ['advertisements'],
 		queryFn: () =>
-			fetch('http://localhost:5000/display-home-product', {
+			fetch('https://assignment-12-server-pi.vercel.app/display-home-product', {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},

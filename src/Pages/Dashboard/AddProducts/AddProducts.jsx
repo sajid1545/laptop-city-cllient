@@ -19,7 +19,7 @@ const AddProducts = () => {
 	const { data: categories = [] } = useQuery({
 		queryKey: ['categories'],
 		queryFn: () =>
-			fetch(`http://localhost:5000/categories`, {
+			fetch(`https://assignment-12-server-pi.vercel.app/categories`, {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},
@@ -53,7 +53,7 @@ const AddProducts = () => {
 			userPhoto: user?.photoURL,
 		};
 		console.log(product);
-		fetch(`http://localhost:5000/products`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/products`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',

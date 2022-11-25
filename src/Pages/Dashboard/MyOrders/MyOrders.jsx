@@ -13,7 +13,7 @@ const MyOrders = () => {
 	} = useQuery({
 		queryKey: ['bookedProducts', user?.email],
 		queryFn: () =>
-			fetch(`http://localhost:5000/book-product?email=${user?.email}`, {
+			fetch(`https://assignment-12-server-pi.vercel.app/book-product?email=${user?.email}`, {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},

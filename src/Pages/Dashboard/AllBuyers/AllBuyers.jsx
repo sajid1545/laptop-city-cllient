@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 import { toast } from 'react-hot-toast';
+import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 
 const AllBuyers = () => {
 	const {
@@ -11,7 +11,7 @@ const AllBuyers = () => {
 	} = useQuery({
 		queryKey: ['all-buyers'],
 		queryFn: () =>
-			fetch('http://localhost:5000/all-buyers', {
+			fetch('https://assignment-12-server-pi.vercel.app/all-buyers', {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},
@@ -26,7 +26,7 @@ const AllBuyers = () => {
 
 	const handleDeleteBuyer = (buyer) => {
 		console.log(buyer);
-		fetch(`http://localhost:5000/all-buyers/${buyer._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/all-buyers/${buyer._id}`, {
 			method: 'DELETE',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,

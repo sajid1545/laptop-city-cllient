@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 import { toast } from 'react-hot-toast';
+import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 
 const AllSellers = () => {
 	const {
@@ -11,7 +11,7 @@ const AllSellers = () => {
 	} = useQuery({
 		queryKey: ['allSellers'],
 		queryFn: () =>
-			fetch('http://localhost:5000/all-sellers', {
+			fetch('https://assignment-12-server-pi.vercel.app/all-sellers', {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},
@@ -24,7 +24,7 @@ const AllSellers = () => {
 
 	// verify user
 	const handleVerifyUser = (user) => {
-		fetch(`http://localhost:5000/verify-user/${user._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/verify-user/${user._id}`, {
 			method: 'PUT',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
@@ -40,7 +40,7 @@ const AllSellers = () => {
 
 	// handle deleteUser
 	const handleDeleteUser = (user) => {
-		fetch(`http://localhost:5000/all-sellers/${user._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/all-sellers/${user._id}`, {
 			method: 'DELETE',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,

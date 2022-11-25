@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../../Contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 	const { user } = useContext(AuthContext);
@@ -24,7 +24,7 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 		};
 
 		console.log(purchase);
-		fetch('http://localhost:5000/book-product', {
+		fetch('https://assignment-12-server-pi.vercel.app/book-product', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',

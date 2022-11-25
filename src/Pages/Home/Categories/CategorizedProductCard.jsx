@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { toast } from 'react-hot-toast';
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { useQuery } from '@tanstack/react-query';
-import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
 
 const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }) => {
@@ -30,7 +29,12 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 
 	const { data: userProduct = {}, isLoading } = useQuery({
 		queryKey: ['userProduct', _id],
-		queryFn: () => fetch(`http://localhost:5000/user/products/${_id}`).then((res) => res.json()),
+		queryFn: () =>
+			fetch(`https://assignment-12-server-pi.vercel.app/user/products/${_id}`, {
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+				},
+			}).then((res) => res.json()),
 	});
 
 	const user = userProduct.user;
@@ -45,7 +49,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 
 	const handleReportToAdmin = (product) => {
 		console.log(product);
-		fetch(`http://localhost:5000/reported-items/${product._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/reported-items/${product._id}`, {
 			method: 'PUT',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,

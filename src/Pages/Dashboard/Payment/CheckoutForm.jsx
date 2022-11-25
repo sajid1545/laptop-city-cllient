@@ -16,7 +16,7 @@ const CheckoutForm = ({ product }) => {
 	const [clientSecret, setClientSecret] = useState('');
 
 	useEffect(() => {
-		fetch('http://localhost:5000/create-payment-intent', {
+		fetch('https://assignment-12-server-pi.vercel.app/create-payment-intent', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ price }),
@@ -81,7 +81,7 @@ const CheckoutForm = ({ product }) => {
 				productId: productId,
 			};
 
-			fetch('http://localhost:5000/payments', {
+			fetch('https://assignment-12-server-pi.vercel.app/payments', {
 				method: 'POST',
 				headers: {
 					'content-type': 'application/json',

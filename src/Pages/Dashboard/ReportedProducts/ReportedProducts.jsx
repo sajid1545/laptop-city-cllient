@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
 import { toast } from 'react-hot-toast';
+import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
 
 const ReportedProducts = () => {
 	const {
@@ -11,7 +11,7 @@ const ReportedProducts = () => {
 	} = useQuery({
 		queryKey: ['reportedItems'],
 		queryFn: () =>
-			fetch('http://localhost:5000/reported-items', {
+			fetch('https://assignment-12-server-pi.vercel.app/reported-items', {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},
@@ -24,7 +24,7 @@ const ReportedProducts = () => {
 
 	const handleDeleteReportedItem = (product) => {
 		console.log(product);
-		fetch(`http://localhost:5000/reported-items/${product._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/reported-items/${product._id}`, {
 			method: 'DELETE',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,

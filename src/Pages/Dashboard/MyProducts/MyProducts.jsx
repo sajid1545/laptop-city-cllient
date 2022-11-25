@@ -14,7 +14,7 @@ const MyProducts = () => {
 	} = useQuery({
 		queryKey: ['sellerProducts', user?.email],
 		queryFn: () =>
-			fetch(`http://localhost:5000/seller-products?email=${user?.email}`, {
+			fetch(`https://assignment-12-server-pi.vercel.app/seller-products?email=${user?.email}`, {
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
 				},
@@ -27,7 +27,7 @@ const MyProducts = () => {
 
 	// deleting product
 	const handleDeleteProduct = (product) => {
-		fetch(`http://localhost:5000/seller-products/${product._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/seller-products/${product._id}`, {
 			method: 'DELETE',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
@@ -46,7 +46,7 @@ const MyProducts = () => {
 	// handle advertisement
 	const handleAdvertise = (product) => {
 		console.log(product);
-		fetch(`http://localhost:5000/display-home-product/${product._id}`, {
+		fetch(`https://assignment-12-server-pi.vercel.app/display-home-product/${product._id}`, {
 			method: 'PUT',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
