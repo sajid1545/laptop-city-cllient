@@ -24,7 +24,6 @@ const AllSellers = () => {
 
 	// verify user
 	const handleVerifyUser = (user) => {
-		console.log(user);
 		fetch(`http://localhost:5000/verify-user/${user._id}`, {
 			method: 'PUT',
 			headers: {
@@ -36,6 +35,23 @@ const AllSellers = () => {
 				console.log(data);
 				refetch();
 				toast.success(`${user.name} verified successfully`);
+			});
+	};
+
+	// handle deleteUser
+	const handleDeleteUser = (user) => {
+		fetch(`http://localhost:5000/all-sellers/${user._id}`, {
+			method: 'DELETE',
+			headers: {
+				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.deletedCount > 0) {
+					refetch();
+					toast.success(`${user.name} deleted successfully}`);
+				}
 			});
 	};
 
@@ -72,7 +88,9 @@ const AllSellers = () => {
 								</td>
 
 								<td>
-									<button className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
+									<button
+										onClick={() => handleDeleteUser(seller)}
+										className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80">
 										Delete
 									</button>
 								</td>
