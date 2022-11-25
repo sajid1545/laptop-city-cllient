@@ -3,7 +3,7 @@ import React from 'react';
 const AdvertisementCard = ({advertise}) => {
 	return (
 		<div>
-			<div className="max-w-xs cursor-pointer h-[400px] rounded-md shadow-md bg-gray-900 text-gray-100">
+			<div className="max-w-xs cursor-pointer h-[400px] rounded-md shadow-md bg-gray-900 text-gray-100 mx-auto">
 				<img
 					src={advertise.picture}
 					alt=""

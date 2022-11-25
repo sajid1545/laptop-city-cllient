@@ -1,16 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
 import Navbar from './../Pages/Shared/Navbar/Navbar';
+import SmallSpinner from './../Pages/Shared/Spinners/SmallSpinner';
+import LargeSpinner from './../Pages/Shared/Spinners/LargeSpinner';
 
 const DashboardLayout = () => {
 	const { user } = useContext(AuthContext);
 
-	const [isSeller] = useSeller(user?.email);
+	const [isSeller, isSellerLoading] = useSeller(user?.email);
 
-	const [isAdmin] = useAdmin(user?.email);
+	const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+
+	if (isSellerLoading || isAdminLoading) {
+		return <LargeSpinner />;
+	}
 
 	return (
 		<div>
@@ -19,9 +25,6 @@ const DashboardLayout = () => {
 				<input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
 				<div className="drawer-content ">
 					<Outlet />
-					{/* <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">
-						Open drawer
-					</label> */}
 				</div>
 				<div className="drawer-side">
 					<label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
@@ -49,6 +52,11 @@ const DashboardLayout = () => {
 									Seller
 								</span>
 							)}
+							{!isSeller && !isAdmin && (
+								<span className="px-8 mt-5 py-1  text-base rounded-full text-yellow-600  bg-yellow-200 ">
+									Buyer
+								</span>
+							)}
 						</div>
 						<div className="divider"></div>
 
@@ -63,7 +71,6 @@ const DashboardLayout = () => {
 								</li>
 							</>
 						)}
-
 						{isSeller && !isAdmin && (
 							<>
 								<li>
@@ -82,7 +89,6 @@ const DashboardLayout = () => {
 								</li>
 							</>
 						)}
-
 						{isAdmin && !isSeller && (
 							<>
 								<li>
