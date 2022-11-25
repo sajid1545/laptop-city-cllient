@@ -92,7 +92,6 @@ const MyProducts = () => {
 								</td>
 								<td>{product.productsName}</td>
 								<td>{product.resellPrice}</td>
-								
 
 								<td>
 									{!product.paid && !product.productStatus && (
@@ -104,11 +103,20 @@ const MyProducts = () => {
 									)}
 
 									{product.productStatus && (
-										<p className="text-green-700 font-extrabold text-xl">Advertised</p>
+										<p className="text-green-700 font-extrabold text-xl ">Advertised</p>
 									)}
 								</td>
 								<td>
-									{product.paid && <p className="text-green-700 font-extrabold text-xl">Sold</p>}
+									{product.paid && (
+										<p className="px-4 py-2  text-base rounded-full text-green-600  bg-green-200 text-center">
+											Sold
+										</p>
+									)}
+									{!product.paid && (
+										<p className="px-4 py-2  text-base rounded-full text-yellow-600  bg-yellow-200">
+											Available
+										</p>
+									)}
 								</td>
 								<td>
 									<button

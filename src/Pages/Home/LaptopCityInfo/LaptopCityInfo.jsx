@@ -4,7 +4,7 @@ import laptopInfoBanner from '../../../Assets/Images/laptopCityInfo.jpg';
 const LaptopCityInfo = () => {
 	return (
 		<div className="hero my-10">
-			<div className="hero-content flex-col lg:flex-row  ">
+			<div className="hero-content flex-col text-center md:text-left gap-10 md:gap-20 lg:flex-row  ">
 				<img src={laptopInfoBanner} className="rounded-lg lg:w-1/2 shadow-2xl" alt="" />
 				<div className="lg:w-1/2">
 					<p className="py-6">

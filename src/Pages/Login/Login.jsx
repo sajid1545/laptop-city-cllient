@@ -5,7 +5,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import setAuthToken from '../../API/auth';
 import SmallSpinner from '../Shared/Spinners/SmallSpinner';
-import './login.css'
+import './login.css';
 
 const Login = () => {
 	const { signIn, googleSignIn } = useContext(AuthContext);
@@ -42,7 +42,6 @@ const Login = () => {
 			.catch((err) => {
 				setLoginError(err.message);
 				setLoad(false);
-
 			});
 	};
 
@@ -55,7 +54,7 @@ const Login = () => {
 				const userInfo = {
 					name: user?.displayName,
 					email: user?.email,
-					role: 'user',
+					role: 'buyer',
 				};
 				setAuthToken(userInfo);
 				toast.success('login success');

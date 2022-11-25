@@ -60,7 +60,7 @@ const SignUp = () => {
 				const userInfo = {
 					name: user?.displayName,
 					email: user?.email,
-					role: 'user',
+					role: 'buyer',
 				};
 				setAuthToken(userInfo);
 				toast.success('Sign up success');
@@ -99,9 +99,9 @@ const SignUp = () => {
 					</div>
 					<div className="space-y-1 text-sm">
 						<select
-							{...register('userStatus', { required: 'User status is required' })}
-							className="select select-primary w-full px-4 py-3 rounded-md border-gray-700 border-2 bg-gray-900 text-gray-100 focus:border-violet-400">
-							<option value={'user'}>User</option>
+							{...register('userStatus')}
+							className="select select-primary w-full px-4  rounded-md border-gray-700 border-2 bg-gray-900 text-gray-100 focus:border-violet-400 space-y-4">
+							<option  value={'buyer'}>Buyer</option>
 							<option>Seller</option>
 						</select>
 					</div>

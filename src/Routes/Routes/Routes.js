@@ -17,6 +17,7 @@ import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
 import ReportedProducts from '../../Pages/Dashboard/ReportedProducts/ReportedProducts';
 import ErrorPage from './../../Pages/Shared/ErrorPage/ErrorPage';
 import Blogs from './../../Pages/Blogs/Blogs';
+import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
 
 export const router = createBrowserRouter([
 	{
@@ -102,7 +103,7 @@ export const router = createBrowserRouter([
 				path: '/dashboard/allBuyers',
 				element: (
 					<AdminRoute>
-						<ReportedProducts />
+						<AllBuyers />
 					</AdminRoute>
 				),
 			},

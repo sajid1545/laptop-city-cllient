@@ -64,7 +64,7 @@ const DashboardLayout = () => {
 							</>
 						)}
 
-						{isSeller && (
+						{isSeller && !isAdmin && (
 							<>
 								<li>
 									<NavLink
@@ -83,7 +83,7 @@ const DashboardLayout = () => {
 							</>
 						)}
 
-						{isAdmin && (
+						{isAdmin && !isSeller && (
 							<>
 								<li>
 									<NavLink
