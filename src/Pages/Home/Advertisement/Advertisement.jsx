@@ -4,7 +4,7 @@ import AdvertisementCard from './AdvertisementCard';
 
 const Advertisement = () => {
 	const { data: advertisements = [], isLoading } = useQuery({
-		queryKey: [],
+		queryKey: ['advertisements'],
 		queryFn: () =>
 			fetch('http://localhost:5000/display-home-product', {
 				headers: {

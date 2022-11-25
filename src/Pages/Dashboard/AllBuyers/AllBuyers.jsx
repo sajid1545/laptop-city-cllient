@@ -9,7 +9,7 @@ const AllBuyers = () => {
 		isLoading,
 		refetch,
 	} = useQuery({
-		queryKey: [''],
+		queryKey: ['all-buyers'],
 		queryFn: () =>
 			fetch('http://localhost:5000/all-buyers', {
 				headers: {

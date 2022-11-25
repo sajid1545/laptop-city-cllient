@@ -9,7 +9,7 @@ const ReportedProducts = () => {
 		isLoading,
 		refetch,
 	} = useQuery({
-		queryKey: [],
+		queryKey: ['reportedItems'],
 		queryFn: () =>
 			fetch('http://localhost:5000/reported-items', {
 				headers: {

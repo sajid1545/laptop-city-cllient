@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../Contexts/AuthProvider';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { CheckBadgeIcon } from '@heroicons/react/24/solid';
+import { useQuery } from '@tanstack/react-query';
+import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
+import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
 
-const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
-	const { user } = useContext(AuthContext);
-
-	// const [refresh, setRefresh] = useState([]);
-
+const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }) => {
 	const {
 		productsName,
 		picture,
@@ -19,6 +18,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 		userName,
 		description,
 		userPhoto,
+		userEmail,
 		paid,
 		_id,
 		reported,
@@ -26,9 +26,22 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 
 	const [report, setReport] = useState(product.reported);
 
+	// get use info from product
+
+	const { data: userProduct = {}, isLoading } = useQuery({
+		queryKey: ['userProduct', _id],
+		queryFn: () => fetch(`http://localhost:5000/user/products/${_id}`).then((res) => res.json()),
+	});
+
+	const user = userProduct.user;
+
 	useEffect(() => {
 		setReport(report);
 	}, [report]);
+
+	if (isLoading) {
+		return <SmallSpinner />;
+	}
 
 	const handleReportToAdmin = (product) => {
 		console.log(product);
@@ -60,7 +73,10 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 							className="object-cover w-12 h-12 rounded-full shadow bg-gray-500"
 						/>
 						<div className="flex flex-col space-y-1">
-							<span className="text-sm font-semibold">{userName}</span>
+							<div className="flex gap-2">
+								<span className="text-sm font-semibold">{userName}</span>
+								{user?.verified && <CheckBadgeIcon className="h-6 w-6 text-blue-500" />}
+							</div>
 							<span className="text-xs text-gray-400">{postedTime}</span>
 						</div>
 					</div>
