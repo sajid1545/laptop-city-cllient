@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import setAuthToken from '../../API/auth';
 import SmallSpinner from '../Shared/Spinners/SmallSpinner';
 import './login.css';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 	const { signIn, googleSignIn } = useContext(AuthContext);
@@ -71,6 +72,9 @@ const Login = () => {
 
 	return (
 		<div className="flex items-center justify-center h-screen login-form">
+			<Helmet>
+				<title> Login - Laptop City </title>
+			</Helmet>
 			<div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
 				<h1 className="text-2xl font-bold text-center">Login</h1>
 				<form onSubmit={handleSubmit(handleLogin)} className="space-y-6 ">

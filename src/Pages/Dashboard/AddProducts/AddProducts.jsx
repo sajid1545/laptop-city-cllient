@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -73,6 +74,9 @@ const AddProducts = () => {
 
 	return (
 		<div>
+			<Helmet>
+				<title> Add Products - Laptop City </title>
+			</Helmet>
 			<h1 className="text-5xl font-bold text-center">Add Product</h1>
 
 			<div className="mt-10">

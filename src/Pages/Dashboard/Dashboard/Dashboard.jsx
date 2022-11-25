@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { AuthContext } from './../../../Contexts/AuthProvider';
 import './dashboard.css';
 
@@ -7,6 +8,9 @@ const Dashboard = () => {
 
 	return (
 		<div className="flex lg:ml-10 justify-center items-center min-h-screen dashboard">
+			<Helmet>
+				<title> Dashboard - Laptop City </title>
+			</Helmet>
 			<div className="hero min-h-screen ">
 				<div className="hero-overlay bg-opacity-60"></div>
 				<div className="hero-content text-center text-neutral-content">

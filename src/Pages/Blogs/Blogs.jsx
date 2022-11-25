@@ -1,10 +1,14 @@
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
 	return (
 		<div>
+			<Helmet>
+				<title> Blogs - Laptop City </title>
+			</Helmet>
 			<div className="w-[75%] mx-auto flex justify-center mt-20">
 				<div className="mx-auto w-full max-w-5xl rounded-2xl bg-white space-y-5">
 					{/* Question - 1 */}

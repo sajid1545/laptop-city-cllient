@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const AllBuyers = () => {
 	const {
@@ -44,6 +45,9 @@ const AllBuyers = () => {
 
 	return (
 		<div>
+			<Helmet>
+				<title> All Buyers - Laptop City </title>
+			</Helmet>
 			<h1 className="text-5xl text-center font-bold">All Buyers</h1>
 			<div className="overflow-x-auto w-[85%] mx-auto my-10 ">
 				<table className="table w-full">

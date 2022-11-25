@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
@@ -64,6 +65,9 @@ const MyProducts = () => {
 
 	return (
 		<div>
+			<Helmet>
+				<title> My Products - Laptop City </title>
+			</Helmet>
 			<h1 className="text-4xl text-center font-bold mb-5">My Added products</h1>
 
 			<div className="overflow-x-auto">

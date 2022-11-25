@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AuthProvider from './Contexts/AuthProvider';
+import { HelmetProvider } from 'react-helmet-async';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -14,7 +15,9 @@ root.render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
-				<App />
+				<HelmetProvider>
+					<App />
+				</HelmetProvider>
 			</AuthProvider>
 		</QueryClientProvider>
 	</React.StrictMode>

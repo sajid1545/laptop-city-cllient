@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
 import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
 
@@ -42,6 +43,9 @@ const ReportedProducts = () => {
 
 	return (
 		<div>
+			<Helmet>
+				<title> Reported Products - Laptop City </title>
+			</Helmet>
 			<h1 className="text-5xl font-bold text-center">Reported Items</h1>
 
 			<div className="overflow-x-auto w-[85%] mx-auto my-10">

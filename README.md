@@ -1,21 +1,34 @@
 #### App Title ---
 
-## Laptop City
+# **Laptop City**
 
-## Live Site
+#
+
+## **Live Site**
 
 (https://laptop-city-3d932.web.app/ “Laptop City”)
 
 #
 
-1. Laptop City sales refurbished laptops around the world.There can be 3 types of user in this suite
-2. While registering by default users will be give buyers role option, or they can choose seller role.
+## **Admin Credentials**
+
+## adminEmail : sajid@gmail.com
+
+## adminPassword : 123456
+
+#
+
+## Site features
+
+1. Laptop City sales refurbished laptops around the world.
+2. There can be 3 types of user in this suite.While registering by default users will be give buyers role option, or they can choose seller role.
 3. Users with buyer role can purchase products and pay for its. Stripe is used for payment integration.
 4. Users with seller role can add products, delete the products added by them, or can advertise their product. If product is advertise it will appear in home page, as soon the product is unavailable or sold out it will disappear. If a product is sold out, user can delete that product from database.
 5. third type of user is admin.Amin can see all types of users including sellers and buyers.Buyers get a **report to admin** button, is a product is reported admin can see it and delete the product.
 6. Users have to sign up or login to go to dashboard
 7. Routes of dashboard will change automatically based on the user role.
 8. In order to purchase a laptop, user have to book first, then that product will appear in My orders route.From that route user can pay for it.As soon as price is paid for the products it will disappear from categories and home.
+9. **If the data doest not load that means yours JWT token has expired, so if you ever face such problems just log out and login again**
 
 #
 
@@ -33,5 +46,15 @@
 10. react-photo-view --> to preview an image
 11. AOS LIBRARY --> for animation
 12. react-scroll-to-top ---> scroll to the top of the page
+13. Stripe --> for payment integration
 
 #
+
+## Packages and Technologies used (Server Side)
+
+1. Nodemon --> to monitor changes while updating
+2. Express js (Node js framework)
+3. Cors --> supports data transfer between servers
+4. Stripe --> for payment integration
+5. jsonwebtoken --> to securing information sharing between server and client
+6. dotenv --> to separate secrets from my code

@@ -3,6 +3,7 @@ import { useLoaderData, useNavigation } from 'react-router-dom';
 import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 import BookingModal from './BookingModal/BookingModal';
 import CategorizedProductCard from './CategorizedProductCard';
+import { Helmet } from 'react-helmet-async';
 
 const CategorizedProducts = () => {
 	const products = useLoaderData();
@@ -30,6 +31,7 @@ const CategorizedProducts = () => {
 							/>
 						)
 				)}
+				
 			</div>
 
 			{purchaseProduct !== null && (

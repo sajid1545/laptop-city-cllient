@@ -3,6 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+import { Helmet } from 'react-helmet-async';
 
 const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }) => {
 	const {
@@ -68,6 +71,9 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 
 	return (
 		<div>
+			<Helmet>
+					<title> Category - Laptop City </title>
+				</Helmet>
 			<div className="max-w-xl  h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
 				<div className="flex space-x-4 items-center justify-between">
 					<div className="flex items-center gap-3">
@@ -76,6 +82,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 							src={userPhoto}
 							className="object-cover w-12 h-12 rounded-full shadow bg-gray-500"
 						/>
+
 						<div className="flex flex-col space-y-1">
 							<div className="flex gap-2">
 								<span className="text-sm font-semibold">{userName}</span>
@@ -99,11 +106,15 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 				</div>
 				<div className="space-y-4">
 					<div className="space-y-2">
-						<img
-							src={picture}
-							alt=""
-							className="block object-cover object-center w-full rounded-md h-72 bg-gray-500"
-						/>
+						<PhotoProvider>
+							<PhotoView src={picture}>
+								<img
+									src={picture}
+									alt=""
+									className="block object-cover object-center w-full rounded-md h-72 bg-gray-500"
+								/>
+							</PhotoView>
+						</PhotoProvider>
 					</div>
 					<div className="space-y-2">
 						<div className="block mb-7">

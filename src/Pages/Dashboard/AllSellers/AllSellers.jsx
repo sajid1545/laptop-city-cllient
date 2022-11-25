@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
 import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 
@@ -57,6 +58,9 @@ const AllSellers = () => {
 
 	return (
 		<div>
+			<Helmet>
+				<title> All Sellers - Laptop City </title>
+			</Helmet>
 			<h1 className="text-5xl text-center font-bold">All Sellers</h1>
 			<div className="overflow-x-auto w-[85%] mx-auto mt-5">
 				<table className="table w-full">

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -74,6 +75,9 @@ const SignUp = () => {
 
 	return (
 		<div className="mt-5 signUp-form">
+			<Helmet>
+				<title> Sign Up - Laptop City </title>
+			</Helmet>
 			<div className="w-full max-w-lg mx-auto p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
 				<h1 className="text-2xl font-bold text-center">Sign Up</h1>
 				<form onSubmit={handleSubmit(handleSignup)} className="space-y-6 ">

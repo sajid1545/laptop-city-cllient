@@ -1,6 +1,7 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 import CheckoutForm from './CheckoutForm';
 
@@ -13,6 +14,9 @@ const Payment = () => {
 
 	return (
 		<div className="w-[85%] mx-auto mt-10">
+			<Helmet>
+				<title> Payment - Laptop City </title>
+			</Helmet>
 			<div>
 				<h1 className="text-4xl font-extrabold text-center">Pay for you Product</h1>
 				<h1 className="text-center text-xl font-bold mt-3">
