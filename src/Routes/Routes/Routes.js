@@ -17,6 +17,7 @@ import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
 import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
 import ReportedProducts from '../../Pages/Dashboard/ReportedProducts/ReportedProducts';
 import ErrorPage from './../../Pages/Shared/ErrorPage/ErrorPage';
+import Blogs from './../../Pages/Blogs/Blogs';
 
 export const router = createBrowserRouter([
 	{
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/signup',
 				element: <SignUp />,
+			},
+			{
+				path: '/blogs',
+				element: <Blogs />,
 			},
 		],
 	},

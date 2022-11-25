@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Outlet, ScrollRestoration } from 'react-router-dom';
+import {NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
@@ -55,7 +55,12 @@ const DashboardLayout = () => {
 						{!isSeller && !isAdmin && (
 							<>
 								<li>
-									<Link to={'/dashboard/myOrders'}>My Orders</Link>
+									<NavLink
+										to={'/dashboard/myOrders'}
+										className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
+											isActive ? 'active' : undefined}`}>
+										My Orders
+									</NavLink>
 								</li>
 							</>
 						)}
@@ -63,10 +68,10 @@ const DashboardLayout = () => {
 						{isSeller && (
 							<>
 								<li>
-									<Link to={'/dashboard/addProducts'}>Add a Product</Link>
+									<NavLink to={'/dashboard/addProducts'}>Add a Product</NavLink>
 								</li>
 								<li>
-									<Link to={'/dashboard/myProducts'}>My Products</Link>
+									<NavLink to={'/dashboard/myProducts'}>My Products</NavLink>
 								</li>
 							</>
 						)}
@@ -74,13 +79,13 @@ const DashboardLayout = () => {
 						{isAdmin && (
 							<>
 								<li>
-									<Link to={'/dashboard/allSellers'}>All sellers</Link>
+									<NavLink to={'/dashboard/allSellers'}>All sellers</NavLink>
 								</li>
 								<li>
-									<Link to={'/dashboard/allBuyers'}>All buyers</Link>
+									<NavLink to={'/dashboard/allBuyers'}>All buyers</NavLink>
 								</li>
 								<li>
-									<Link to={'/dashboard/reportedItems'}>Reported Items</Link>
+									<NavLink to={'/dashboard/reportedItems'}>Reported Items</NavLink>
 								</li>
 							</>
 						)}

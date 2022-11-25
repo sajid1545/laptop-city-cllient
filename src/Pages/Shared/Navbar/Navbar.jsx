@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../Assets/Images/logo.jpg';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import './navbar.css'
 
 const Navbar = () => {
 	const { user, logOut } = useContext(AuthContext);
@@ -9,16 +10,31 @@ const Navbar = () => {
 	const menuItems = (
 		<React.Fragment>
 			<li>
-				<Link to="/">Home</Link>
+				<NavLink
+					to="/"
+					className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
+						isActive ? 'active' : undefined}`}>
+					Home
+				</NavLink>
 			</li>
 			<li>
-				<Link to="/">Blogs</Link>
+				<NavLink
+					to="/blogs"
+					className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
+						isActive ? 'active' : undefined}`}>
+					Blogs
+				</NavLink>
 			</li>
 
 			{user?.uid ? (
 				<>
-					<li>
-						<Link to="/dashboard">Dashboard</Link>
+					<li className={``}>
+						<NavLink
+							to="/dashboard"
+							className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
+								isActive ? 'active' : undefined}`}>
+							Dashboard
+						</NavLink>
 					</li>
 					<li>
 						<button
@@ -31,7 +47,7 @@ const Navbar = () => {
 			) : (
 				<>
 					<li>
-						<Link to="/login">Login</Link>
+						<NavLink to="/login">Login</NavLink>
 					</li>
 				</>
 			)}
@@ -66,29 +82,31 @@ const Navbar = () => {
 					</div>
 
 					<div>
-						<img src={logo} alt="" className="" />
+						<Link to={'/'}>
+							<img src={logo} alt="" className="cursor-pointer" />
+						</Link>
 					</div>
 				</div>
 
 				<div className="navbar-end hidden lg:flex">
 					<ul className="menu menu-horizontal p-0">{menuItems}</ul>
 				</div>
-				<div className='lg:hidden navbar-end'>
-				<label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="h-5 w-5"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor">
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M4 6h16M4 12h8m-8 6h16"
-						/>
-					</svg>
-				</label>
+				<div className="lg:hidden navbar-end">
+					<label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							className="h-5 w-5"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor">
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								d="M4 6h16M4 12h8m-8 6h16"
+							/>
+						</svg>
+					</label>
 				</div>
 			</div>
 		</div>
