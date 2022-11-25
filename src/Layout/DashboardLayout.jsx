@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
+import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
@@ -57,8 +57,7 @@ const DashboardLayout = () => {
 								<li>
 									<NavLink
 										to={'/dashboard/myOrders'}
-										className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
-											isActive ? 'active' : undefined}`}>
+										className={`font-medium rounded-xl  hover:underline duration-500`}>
 										My Orders
 									</NavLink>
 								</li>
@@ -68,10 +67,18 @@ const DashboardLayout = () => {
 						{isSeller && (
 							<>
 								<li>
-									<NavLink to={'/dashboard/addProducts'}>Add a Product</NavLink>
+									<NavLink
+										to={'/dashboard/addProducts'}
+										className="font-medium rounded-xl  hover:underline duration-500">
+										Add a Product
+									</NavLink>
 								</li>
 								<li>
-									<NavLink to={'/dashboard/myProducts'}>My Products</NavLink>
+									<NavLink
+										className="font-medium rounded-xl  hover:underline duration-500"
+										to={'/dashboard/myProducts'}>
+										My Products
+									</NavLink>
 								</li>
 							</>
 						)}
@@ -79,13 +86,25 @@ const DashboardLayout = () => {
 						{isAdmin && (
 							<>
 								<li>
-									<NavLink to={'/dashboard/allSellers'}>All sellers</NavLink>
+									<NavLink
+										className="font-medium rounded-xl  hover:underline duration-500"
+										to={'/dashboard/allSellers'}>
+										All sellers
+									</NavLink>
 								</li>
 								<li>
-									<NavLink to={'/dashboard/allBuyers'}>All buyers</NavLink>
+									<NavLink
+										className="font-medium rounded-xl  hover:underline duration-500"
+										to={'/dashboard/allBuyers'}>
+										All buyers
+									</NavLink>
 								</li>
 								<li>
-									<NavLink to={'/dashboard/reportedItems'}>Reported Items</NavLink>
+									<NavLink
+										className="font-medium rounded-xl  hover:underline duration-500"
+										to={'/dashboard/reportedItems'}>
+										Reported Items
+									</NavLink>
 								</li>
 							</>
 						)}

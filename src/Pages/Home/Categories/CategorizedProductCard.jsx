@@ -1,8 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
-const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
+const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 	const { user } = useContext(AuthContext);
+
+	// const [refresh, setRefresh] = useState([]);
 
 	const {
 		productsName,
@@ -17,12 +20,34 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 		description,
 		userPhoto,
 		paid,
-		_id
+		_id,
+		reported,
 	} = product;
+
+	const [report, setReport] = useState(product.reported);
+
+	useEffect(() => {
+		setReport(report);
+	}, [report]);
 
 	const handleReportToAdmin = (product) => {
 		console.log(product);
-	}
+		fetch(`http://localhost:5000/reported-items/${product._id}`, {
+			method: 'PUT',
+			headers: {
+				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				if (data.modifiedCount > 0) {
+					const remaining = products.filter((p) => p.reported !== product.reported);
+					setReport(remaining);
+					toast.success(`${product.productsName} has been reported to Admin`);
+				}
+			});
+	};
 
 	return (
 		<div>
@@ -41,9 +66,15 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 					</div>
 
 					<div className="flex ">
-						<button onClick={()=> handleReportToAdmin(product)} className="py-2 px-4  bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500 focus:ring-offset-yellow-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
-							Report To Admin
-						</button>
+						{!report && (
+							<button
+								onClick={() => handleReportToAdmin(product)}
+								className="py-2 px-4  bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500 focus:ring-offset-yellow-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+								Report To Admin
+							</button>
+						)}
+
+						{report && <p className="text-yellow-500 font-bold">Already Reported</p>}
 					</div>
 				</div>
 				<div className="space-y-4">
@@ -94,7 +125,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct }) => {
 								htmlFor="purchase-modal"
 								onClick={() => setPurchaseProduct(product)}
 								className="w-2/4 text-center mt-10 block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer ">
-								Purchase Now
+								Book Now
 							</label>
 						</div>
 					</div>

@@ -14,7 +14,6 @@ import Payment from '../../Pages/Dashboard/Payment/Payment';
 import Dashboard from './../../Pages/Dashboard/Dashboard/Dashboard';
 import AdminRoute from './../AdminRoute/AdminRoute';
 import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
-import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
 import ReportedProducts from '../../Pages/Dashboard/ReportedProducts/ReportedProducts';
 import ErrorPage from './../../Pages/Shared/ErrorPage/ErrorPage';
 import Blogs from './../../Pages/Blogs/Blogs';
@@ -101,6 +100,14 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/dashboard/allBuyers',
+				element: (
+					<AdminRoute>
+						<ReportedProducts />
+					</AdminRoute>
+				),
+			},
+			{
+				path: '/dashboard/reportedItems',
 				element: (
 					<AdminRoute>
 						<ReportedProducts />

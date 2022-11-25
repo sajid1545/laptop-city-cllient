@@ -25,6 +25,7 @@ const CategorizedProducts = () => {
 							<CategorizedProductCard
 								key={product._id}
 								product={product}
+								products = {products}
 								setPurchaseProduct={setPurchaseProduct}
 							/>
 						)

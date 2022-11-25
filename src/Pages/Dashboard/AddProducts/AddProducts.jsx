@@ -184,7 +184,7 @@ const AddProducts = () => {
 								<label className="block mb-2 text-sm">Categories</label>
 
 								<select
-									{...register('category', { required: 'Category is required' })}
+									{...register('category')}
 									className="select select-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
 									{categories.map((category) => {
 										// setCategoryId(category.id);
