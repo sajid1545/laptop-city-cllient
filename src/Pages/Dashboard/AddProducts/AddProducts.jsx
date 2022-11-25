@@ -26,9 +26,9 @@ const AddProducts = () => {
 			}).then((res) => res.json()),
 	});
 
-	const time = new Date();
-	format(time, 'pp');
-	const formattedTime = time.toLocaleTimeString();
+	const date = format(new Date(), 'Pp');
+
+	console.log(date);
 
 	const handleAddProduct = (data) => {
 		const category = categories.find((category) => category.title === data.category);
@@ -44,7 +44,7 @@ const AddProducts = () => {
 			location: data.location,
 			productCondition: data.condition,
 			yearsUsed: parseFloat(data.yearsUsed),
-			postedTime: formattedTime,
+			postedTime: date,
 			userName: user?.displayName,
 			description: data.description,
 			category: data.category,
@@ -184,10 +184,10 @@ const AddProducts = () => {
 								<label className="block mb-2 text-sm">Categories</label>
 
 								<select
-									{...register('category')}
+									{...register('category', { required: 'Category must be selected' })}
 									className="select select-primary w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100">
+									{/* <option disabled>Select a category</option> */}
 									{categories.map((category) => {
-										// setCategoryId(category.id);
 										return (
 											<option key={category._id} value={category.title}>
 												{category.title}
@@ -195,6 +195,7 @@ const AddProducts = () => {
 										);
 									})}
 								</select>
+								{errors.category && <p className="text-red-600">{errors.category?.message}</p>}
 							</div>
 						</div>
 

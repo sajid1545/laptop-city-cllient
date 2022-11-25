@@ -68,7 +68,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 
 	return (
 		<div>
-			<div className="max-w-xl md:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
+			<div className="max-w-xl  h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
 				<div className="flex space-x-4 items-center justify-between">
 					<div className="flex items-center gap-3">
 						<img

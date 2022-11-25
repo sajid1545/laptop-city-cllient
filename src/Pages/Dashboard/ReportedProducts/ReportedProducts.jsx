@@ -49,6 +49,7 @@ const ReportedProducts = () => {
 					<thead>
 						<tr>
 							<th></th>
+							<th>Image</th>
 							<th>Product</th>
 							<th>Seller Name</th>
 							<th>Action</th>
@@ -58,6 +59,13 @@ const ReportedProducts = () => {
 						{reportedItems.map((item, i) => (
 							<tr key={item._id}>
 								<th>{i + 1}</th>
+								<th>
+									<img
+										alt=""
+										className="w-12 h-12 rounded-full ring-2 ring-offset-4 bg-gray-500 ring-violet-800 ring-offset-gray-800"
+										src={item.picture}
+									/>
+								</th>
 								<td>{item.productsName}</td>
 								<td>{item.userName}</td>
 								<td>

@@ -21,7 +21,7 @@ const Categories = () => {
 		<div>
 			<div>
 				
-				<h1 className="text-5xl font-extrabold text-center ">Get your Desired Laptops Today</h1>
+				{/* <h1 className="text-5xl font-extrabold text-center ">Get your Desired Laptops Today</h1> */}
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-8">
 				{categories.map((category) => (

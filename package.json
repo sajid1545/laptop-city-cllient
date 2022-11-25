@@ -22,8 +22,10 @@
 		"react-hot-toast": "^2.4.0",
 		"react-icons": "^4.6.0",
 		"react-image-gallery": "^1.2.11",
+		"react-photo-view": "^1.2.3",
 		"react-router-dom": "^6.4.3",
 		"react-scripts": "5.0.1",
+		"react-scroll-to-top": "^3.0.0",
 		"react-spinners": "^0.13.6",
 		"web-vitals": "^2.1.4"
 	},

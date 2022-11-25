@@ -17,7 +17,7 @@ const Advertisement = () => {
 			{advertisements.length > 0 && (
 				<>
 					<h1 className="text-center font-extrabold text-5xl ">
-						SELL YOUR <span className="text-[#00A4CF]">LAPTOP</span> FOR QUICK CASH
+						Purchase or Sell refurbished<span className="text-[#00A4CF]"> LAPTOPS</span> 
 					</h1>
 					<hr className="border-4 mt-2 w-2/4 mx-auto  border-[#00A4CF]" />
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-y-7 mx-auto my-10 ">

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { toast } from 'react-hot-toast';
 import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
+import { toast } from 'react-hot-toast';
 
 const AllBuyers = () => {
 	const {
