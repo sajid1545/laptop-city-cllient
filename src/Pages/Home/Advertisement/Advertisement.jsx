@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import AdvertisementCard from './AdvertisementCard';
+import './advertisement.css';
 
 const Advertisement = () => {
 	const { data: advertisements = [], isLoading } = useQuery({
@@ -13,14 +14,14 @@ const Advertisement = () => {
 			}).then((res) => res.json()),
 	});
 	return (
-		<div className="w-[90%] mx-auto">
+		<div className="">
 			{advertisements.length > 0 && (
 				<>
 					<h1 className="text-center font-extrabold text-5xl ">
-						Purchase or Sell refurbished<span className="text-[#00A4CF]"> LAPTOPS</span> 
+						Purchase or Sell refurbished<span className="text-[#00A4CF]"> LAPTOPS</span>
 					</h1>
 					<hr className="border-4 mt-2 w-2/4 mx-auto  border-[#00A4CF]" />
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-y-7 mx-auto my-10 ">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-7  my-20 advertise-banner px-10 py-24 rounded-xl place-items-center ">
 						{advertisements.map(
 							(advertise) =>
 								advertise.productStatus &&

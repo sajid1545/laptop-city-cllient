@@ -28,8 +28,8 @@ const DashboardLayout = () => {
 				</div>
 				<div className="drawer-side">
 					<label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-					<ul className="menu p-4 w-80 bg-[#E6F1F7] text-base-content">
-						<div className="flex flex-col justify-start items-center mt-6 -mx-2 mb-5 ">
+					<ul className="menu p-4 w-80 bg-[#E6F1F7]">
+						<div className="flex flex-col justify-start items-center mt-6 -mx-2 mb-2 ">
 							<img
 								className="object-cover w-24 h-24 mx-2 rounded-full"
 								src={user?.photoURL}
@@ -65,7 +65,7 @@ const DashboardLayout = () => {
 								<li>
 									<NavLink
 										to={'/dashboard/myOrders'}
-										className={`font-medium rounded-xl  hover:underline duration-500`}>
+										className={`font-medium rounded-xl  hover:underline duration-500  text-lg`}>
 										My Orders
 									</NavLink>
 								</li>
@@ -76,13 +76,13 @@ const DashboardLayout = () => {
 								<li>
 									<NavLink
 										to={'/dashboard/addProducts'}
-										className="font-medium rounded-xl  hover:underline duration-500">
+										className="font-medium rounded-xl  hover:underline duration-500  text-lg">
 										Add a Product
 									</NavLink>
 								</li>
 								<li>
 									<NavLink
-										className="font-medium rounded-xl  hover:underline duration-500"
+										className="font-medium rounded-xl  hover:underline duration-500  text-lg"
 										to={'/dashboard/myProducts'}>
 										My Products
 									</NavLink>
@@ -93,21 +93,21 @@ const DashboardLayout = () => {
 							<>
 								<li>
 									<NavLink
-										className="font-medium rounded-xl  hover:underline duration-500"
+										className="font-medium rounded-xl  hover:underline duration-500  text-lg"
 										to={'/dashboard/allSellers'}>
 										All sellers
 									</NavLink>
 								</li>
 								<li>
 									<NavLink
-										className="font-medium rounded-xl  hover:underline duration-500"
+										className="font-medium rounded-xl  hover:underline duration-500  text-lg"
 										to={'/dashboard/allBuyers'}>
 										All buyers
 									</NavLink>
 								</li>
 								<li>
 									<NavLink
-										className="font-medium rounded-xl  hover:underline duration-500"
+										className="font-medium rounded-xl  hover:underline duration-500  text-lg"
 										to={'/dashboard/reportedItems'}>
 										Reported Items
 									</NavLink>

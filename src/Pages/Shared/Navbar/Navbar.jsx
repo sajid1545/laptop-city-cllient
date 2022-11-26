@@ -39,7 +39,7 @@ const Navbar = () => {
 					<li>
 						<button
 							onClick={logOut}
-							className="inline-block rounded border border-[#20609B] bg-[#20609B] px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+							className="inline-block rounded border border-[#20609B] bg-primary px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
 							LogOut
 						</button>
 					</li>
@@ -89,7 +89,7 @@ const Navbar = () => {
 				</div>
 
 				<div className="navbar-end hidden lg:flex">
-					<ul className="menu menu-horizontal p-0">{menuItems}</ul>
+					<ul className="menu menu-horizontal p-0 space-x-2">{menuItems}</ul>
 				</div>
 				<div className="lg:hidden navbar-end">
 					<label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">

@@ -74,7 +74,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 			<Helmet>
 					<title> Category - Laptop City </title>
 				</Helmet>
-			<div className="max-w-xl  h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
+			<div className="max-w-xl text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
 				<div className="flex space-x-4 items-center justify-between">
 					<div className="flex items-center gap-3">
 						<img
