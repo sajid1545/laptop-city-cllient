@@ -8,8 +8,6 @@ const Categories = () => {
 
 	const [load, setLoad] = useState(false);
 
-
-
 	useEffect(() => {
 		setLoad(true);
 		axios
@@ -32,7 +30,7 @@ const Categories = () => {
 		<div className="mt-5">
 			<div>
 				<h1 className="text-center font-extrabold text-5xl ">
-					Purchase refurbished<span className="text-[#00A4CF]"> LAPTOPS</span>
+					Refurbished<span className="text-[#00A4CF]"> LAPTOPS</span> collection
 				</h1>
 				<hr className="border-4 mt-2 w-2/4 mx-auto  border-[#00A4CF]" />
 			</div>
