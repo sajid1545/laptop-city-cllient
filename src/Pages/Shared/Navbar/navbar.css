@@ -6,7 +6,6 @@
 } */
 
 .active {
-    /* background-color: red; */
     border-radius: 4px;
     font-weight: bolder;
 }

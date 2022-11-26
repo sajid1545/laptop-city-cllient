@@ -40,7 +40,7 @@ const Navbar = () => {
 					<li>
 						<button
 							onClick={logOut}
-							className="inline-block rounded border border-[#20609B] bg-primary px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+							className="inline-block rounded border border-[#20609B]  px-8 py-3 text-sm font-medium    focus:outline-none focus:ring active:text-indigo-500">
 							LogOut
 						</button>
 					</li>
@@ -48,11 +48,16 @@ const Navbar = () => {
 			) : (
 				<>
 					<li>
-						<NavLink to="/login">Login</NavLink>
+						<NavLink
+							className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
+								isActive ? 'active' : undefined}`}
+							to="/login">
+							Login
+						</NavLink>
 					</li>
 				</>
 			)}
-			<div className="flex items-center cursor-pointer">
+			<div className="md:flex items-center cursor-pointer block mx-auto ">
 				<span onClick={handleToggleTheme}>
 					{theme ? (
 						<SunIcon className="h-8 w-10 text-yellow-500" />
@@ -86,7 +91,7 @@ const Navbar = () => {
 						</label>
 						<ul
 							tabIndex={0}
-							className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+							className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 space-y-3">
 							{menuItems}
 						</ul>
 					</div>

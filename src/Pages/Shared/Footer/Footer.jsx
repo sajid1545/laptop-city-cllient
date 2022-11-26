@@ -15,7 +15,7 @@ const Footer = () => {
 					</div>
 					<ul className="flex flex-col justify-center items-center gap-3 flex-wrap pl-3 space-x-4 sm:space-x-8">
 						<div>
-							<h1 className="text-right text-lg">You can contact about us</h1>
+							<h1 className="text-center text-lg">You can contact about us</h1>
 						</div>
 						<div className="grid grid-cols-3 place-items-center">
 							<li className="hover:scale-110 duration-500">

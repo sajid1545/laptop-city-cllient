@@ -24,11 +24,13 @@
 2. There can be 3 types of user in this suite.While registering by default users will be give buyers role option, or they can choose seller role.
 3. Users with buyer role can purchase products and pay for its. Stripe is used for payment integration.
 4. Users with seller role can add products, delete the products added by them, or can advertise their product. If product is advertise it will appear in home page, as soon the product is unavailable or sold out it will disappear. If a product is sold out, user can delete that product from database.
-5. third type of user is admin.Amin can see all types of users including sellers and buyers.Buyers get a **report to admin** button, is a product is reported admin can see it and delete the product.
+5. Third type of user is admin.Amin can see all types of users including sellers and buyers.Buyers get a **report to admin** button, is a product is reported admin can see it and delete the product.
 6. Users have to sign up or login to go to dashboard
 7. Routes of dashboard will change automatically based on the user role.
 8. In order to purchase a laptop, user have to book first, then that product will appear in My orders route.From that route user can pay for it.As soon as price is paid for the products it will disappear from categories and home.
 9. **If the data doest not load that means yours JWT token has expired, so if you ever face such problems just log out and login again**
+10. Users can toggle between light and dark mode
+11. If admin deletes a user with **seller** role, next time when the user logs in again, he/she will have buyer role.
 
 #
 

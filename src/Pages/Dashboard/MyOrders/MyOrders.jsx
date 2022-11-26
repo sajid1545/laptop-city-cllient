@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 
 const MyOrders = () => {
-	const { user } = useContext(AuthContext);
+	const { user, theme } = useContext(AuthContext);
 	const {
 		data: bookedProducts = [],
 		isLoading,
@@ -54,15 +54,15 @@ const MyOrders = () => {
 					<tbody className="divide-y divide-gray-200">
 						{bookedProducts.map((product) => (
 							<tr key={product._id}>
-								<td className="whitespace-nowrap px-4 py-2 text-gray-700">
+								<td className="whitespace-nowrap px-4 py-2 ">
 									<div className="avatar">
 										<div className="w-20 rounded-full">
 											<img src={product.picture} alt="" />
 										</div>
 									</div>
 								</td>
-								<td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.productName}</td>
-								<td className="whitespace-nowrap px-4 py-2 text-gray-700">৳{product.price}</td>
+								<td className="whitespace-nowrap px-4 py-2 ">{product.productName}</td>
+								<td className="whitespace-nowrap px-4 py-2 ">৳{product.price}</td>
 
 								{!product.paid && (
 									<td>
@@ -75,7 +75,12 @@ const MyOrders = () => {
 								)}
 
 								{product.paid && (
-									<p className="text-green-700 text-2xl mt-7  font-extrabold">Paid</p>
+									<td
+										className={`${
+											theme ? 'text-green-500' : 'text-green-700'
+										}  text-2xl mt-7  font-extrabold`}>
+										Paid
+									</td>
 								)}
 							</tr>
 						))}

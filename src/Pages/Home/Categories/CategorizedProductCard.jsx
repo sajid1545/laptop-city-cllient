@@ -81,15 +81,15 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 				className={`max-w-xl text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl ${
 					theme ? 'border-2 border-[#B3C5EF]' : 'border-0'
 				}`}>
-				<div className="flex space-x-4 items-center justify-between">
-					<div className="flex items-center gap-3">
+				<div className="flex flex-col gap-4 md:gap-0 md:flex-row space-x-4 items-center justify-between">
+					<div className="flex items-center gap-3 flex-col  md:gap-2 md:flex-row">
 						<img
 							alt=""
 							src={userPhoto}
 							className="object-cover w-12 h-12 rounded-full shadow bg-gray-500"
 						/>
 
-						<div className="flex flex-col space-y-1">
+						<div className="flex flex-col space-y-2 ">
 							<div className="flex gap-2">
 								<span className="text-sm font-semibold">{userName}</span>
 								{user?.verified && <CheckBadgeIcon className="h-6 w-6 text-blue-500" />}
