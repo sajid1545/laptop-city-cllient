@@ -45,7 +45,8 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 		<div>
 			<input type="checkbox" id="purchase-modal" className="modal-toggle" />
 			<div className="modal">
-				<div className="modal-box">
+				<div className="modal-box relative">
+				<label htmlFor="purchase-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 					<h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
 					<form onSubmit={handlePurchase} className="space-y-4 mt-5">
 						<input
