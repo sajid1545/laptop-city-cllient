@@ -7,7 +7,7 @@ const CategoriesCard = ({ category }) => {
 	return (
 		<Link to={`/category/${_id}`}>
 			<div
-				data-aos="zoom-in"
+				// data-aos="zoom-in"
 				className="card w-96 h-[300px] mx-auto hover:shadow-[#00A4CF] shadow-xl  image-full">
 				<figure>
 					<img src={picture} alt="Shoes" className='w-full' />

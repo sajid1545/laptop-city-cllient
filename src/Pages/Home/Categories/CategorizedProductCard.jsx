@@ -78,7 +78,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 				<title> Category - Laptop City </title>
 			</Helmet>
 			<div
-				className={`max-w-xl text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl ${
+				className={`max-w-lg text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl ${
 					theme ? 'border-2 border-[#B3C5EF]' : 'border-0'
 				}`}>
 				<div className="flex flex-col gap-4 md:gap-0 md:flex-row space-x-4 items-center justify-between">

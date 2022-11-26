@@ -8,15 +8,7 @@ import LaptopCityInfo from '../LaptopCityInfo/LaptopCityInfo';
 
 
 const Home = () => {
-	// const { data: advertisements = [], isLoading } = useQuery({
-	// 	queryKey: [],
-	// 	queryFn: () =>
-	// 		fetch('https://assignment-12-server-pi.vercel.app/display-home-product', {
-	// 			headers: {
-	// 				authorization: `Bearer ${localStorage.getItem('laptop-city-token')}`,
-	// 			},
-	// 		}).then((res) => res.json()),
-	// });
+
 
 	return (
 		<div>

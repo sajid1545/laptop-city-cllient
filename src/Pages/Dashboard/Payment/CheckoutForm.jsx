@@ -94,11 +94,11 @@ const CheckoutForm = ({ product }) => {
 					console.log(data);
 					if (data.acknowledged) {
 						toast.success('Payment Successful');
-						setLoad(false);
 						
 					}
 				});
-		}
+			}
+			setLoad(false);
 	};
 
 	return (
