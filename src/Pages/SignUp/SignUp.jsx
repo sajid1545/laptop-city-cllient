@@ -79,11 +79,9 @@ const SignUp = () => {
 				<title> Sign Up - Laptop City </title>
 			</Helmet>
 
-			<div className='hidden lg:block'>
-					<div className="w-96 h-[150px] mb-5  mx-auto reg-gif"></div>
-				</div>
 			
-			<div className="flex justify-center items-center gap-10">
+			
+			<div className="flex justify-center items-center py-10 gap-10">
 				
 				<div className="w-full max-w-lg  p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
 					<h1 className="text-2xl font-bold text-center">Sign Up</h1>

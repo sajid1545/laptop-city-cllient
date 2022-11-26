@@ -21,7 +21,18 @@ function App() {
 		<div data-theme={theme ? 'night' : 'light'} className="max-w-[1440px] mx-auto">
 			<RouterProvider router={router} />
 			<ScrollToTop smooth component={<MySVG />} />
-			<Toaster position="top-center" reverseOrder={true} />
+			<Toaster
+				position="top-center"
+				reverseOrder={true}
+				toastOptions={{
+					className: '',
+					duration: 2500,
+					style: {
+						background: '#000000',
+						color: '#fff',
+					},
+				}}
+			/>
 		</div>
 	);
 }

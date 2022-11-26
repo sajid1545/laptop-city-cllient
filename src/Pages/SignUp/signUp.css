@@ -1,11 +1,4 @@
 .signUp-form {
-    background: url('../../Assets/Images/register-picture.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.reg-gif {
     background: url('../../Assets/Images/register-gif.gif');
     background-position: center;
     background-repeat: no-repeat;

@@ -1,4 +1,6 @@
 .dashboard {
-    background: url('../../../Assets/Images/dashboard.jpg');
-
+    background: url('../../../Assets/Images/dashboad-gif.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
