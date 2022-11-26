@@ -1,13 +1,16 @@
 import { CheckBadgeIcon } from '@heroicons/react/24/solid';
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
-import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import { Helmet } from 'react-helmet-async';
+import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
+import { AuthContext } from './../../../Contexts/AuthProvider';
 
-const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }) => {
+const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
+	const { theme } = useContext(AuthContext);
+
 	const {
 		productsName,
 		picture,
@@ -72,9 +75,12 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 	return (
 		<div>
 			<Helmet>
-					<title> Category - Laptop City </title>
-				</Helmet>
-			<div className="max-w-xl text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl">
+				<title> Category - Laptop City </title>
+			</Helmet>
+			<div
+				className={`max-w-xl text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl ${
+					theme ? 'border-2 border-[#B3C5EF]' : 'border-0'
+				}`}>
 				<div className="flex space-x-4 items-center justify-between">
 					<div className="flex items-center gap-3">
 						<img
@@ -88,7 +94,10 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 								<span className="text-sm font-semibold">{userName}</span>
 								{user?.verified && <CheckBadgeIcon className="h-6 w-6 text-blue-500" />}
 							</div>
-							<span className="text-xs text-gray-400">{postedTime}</span>
+							<span className="text-xs text-gray-400">
+								{postedTime.split(', ')[1]}, {''}
+								{postedTime.split(', ')[0]}
+							</span>
 						</div>
 					</div>
 
@@ -155,7 +164,8 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products, users }
 							<label
 								htmlFor="purchase-modal"
 								onClick={() => setPurchaseProduct(product)}
-								className="w-2/4 text-center mt-10 block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer ">
+								className={`w-2/4 text-center mt-10 block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer
+								btn-primary ${theme ? 'btn-primary' : ''}`}>
 								Book Now
 							</label>
 						</div>

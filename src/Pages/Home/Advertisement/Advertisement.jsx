@@ -21,7 +21,7 @@ const Advertisement = () => {
 						Purchase or Sell refurbished<span className="text-[#00A4CF]"> LAPTOPS</span>
 					</h1>
 					<hr className="border-4 mt-2 w-2/4 mx-auto  border-[#00A4CF]" />
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-7  my-20 advertise-banner px-10 py-24 rounded-xl place-items-center ">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-7  my-20 advertise-banner px-10 py-24 rounded-xl place-content-center ">
 						{advertisements.map(
 							(advertise) =>
 								advertise.productStatus &&

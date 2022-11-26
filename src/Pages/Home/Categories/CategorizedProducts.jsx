@@ -7,10 +7,10 @@ import { Helmet } from 'react-helmet-async';
 
 const CategorizedProducts = () => {
 	const products = useLoaderData();
-	const [purchaseProduct, setPurchaseProduct] = useState(null);
-
+	
 	const navigation = useNavigation();
 
+	const [purchaseProduct, setPurchaseProduct] = useState(null);
 	if (navigation.status === 'loading') {
 		return <LargeSpinner />;
 	}

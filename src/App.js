@@ -2,21 +2,23 @@ import { Toaster } from 'react-hot-toast';
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { router } from './Routes/Routes/Routes';
-import { ReactComponent as MySVG } from "./logo.svg";
-import ScrollToTop from "react-scroll-to-top";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from 'react';
+import { ReactComponent as MySVG } from './logo.svg';
+import ScrollToTop from 'react-scroll-to-top';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from './Contexts/AuthProvider';
 
 function App() {
+	const { theme } = useContext(AuthContext);
 
 	useEffect(() => {
 		AOS.init();
 		AOS.refresh();
-	  }, []);
+	}, []);
 
 	return (
-		<div className="max-w-[1440px] mx-auto">
+		<div data-theme={theme ? 'night' : 'light'} className="max-w-[1440px] mx-auto">
 			<RouterProvider router={router} />
 			<ScrollToTop smooth component={<MySVG />} />
 			<Toaster position="top-center" reverseOrder={true} />

@@ -37,8 +37,8 @@ const Login = () => {
 				};
 				setAuthToken(userInfo);
 				toast.success('Login Successful');
-				navigate(from, { replace: true });
 				setLoad(false);
+				navigate(from, { replace: true });
 			})
 			.catch((err) => {
 				setLoginError(err.message);

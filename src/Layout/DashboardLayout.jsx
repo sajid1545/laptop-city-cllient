@@ -4,11 +4,10 @@ import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 import useSeller from '../Hooks/useSeller';
 import Navbar from './../Pages/Shared/Navbar/Navbar';
-import SmallSpinner from './../Pages/Shared/Spinners/SmallSpinner';
 import LargeSpinner from './../Pages/Shared/Spinners/LargeSpinner';
 
 const DashboardLayout = () => {
-	const { user } = useContext(AuthContext);
+	const { user, theme } = useContext(AuthContext);
 
 	const [isSeller, isSellerLoading] = useSeller(user?.email);
 
@@ -28,17 +27,17 @@ const DashboardLayout = () => {
 				</div>
 				<div className="drawer-side">
 					<label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-					<ul className="menu p-4 w-80 bg-[#E6F1F7]">
+					<ul className={`menu p-4 w-80  ${theme ? 'bg-[#0F1729] border-2 border-yellow-500' : 'bg-[#E6F1F7]'}`}>
 						<div className="flex flex-col justify-start items-center mt-6 -mx-2 mb-2 ">
 							<img
 								className="object-cover w-24 h-24 mx-2 rounded-full"
 								src={user?.photoURL}
 								alt="avatar"
 							/>
-							<h4 className="mx-2 mt-2 font-medium text-gray-800  hover:underline">
+							<h4 className="mx-2 mt-2 font-medium   hover:underline">
 								{user?.displayName}
 							</h4>
-							<p className="divide-y-8 mx-2 mt-1 text-sm font-medium text-black  hover:underline">
+							<p className="divide-y-8 mx-2 mt-1 text-sm font-medium   hover:underline">
 								{user?.email}
 							</p>
 

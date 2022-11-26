@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../Assets/Images/logo.jpg';
 import { AuthContext } from '../../../Contexts/AuthProvider';
-import './navbar.css'
+import './navbar.css';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
-	const { user, logOut } = useContext(AuthContext);
+	const { user, logOut, theme, handleToggleTheme } = useContext(AuthContext);
 
 	const menuItems = (
 		<React.Fragment>
@@ -28,7 +29,7 @@ const Navbar = () => {
 
 			{user?.uid ? (
 				<>
-					<li className={``}>
+					<li>
 						<NavLink
 							to="/dashboard"
 							className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
@@ -51,12 +52,21 @@ const Navbar = () => {
 					</li>
 				</>
 			)}
+			<div className="flex items-center cursor-pointer">
+				<span onClick={handleToggleTheme}>
+					{theme ? (
+						<SunIcon className="h-8 w-10 text-yellow-500" />
+					) : (
+						<MoonIcon className="h-8 w-10 text-slate-800" />
+					)}
+				</span>
+			</div>
 		</React.Fragment>
 	);
 
 	return (
 		<div>
-			<div className="navbar w-[95%] mx-auto mt-2">
+			<div className="navbar w-[95%] mx-auto py-4 ">
 				<div className="navbar-start">
 					<div className="dropdown">
 						<label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,8 +98,8 @@ const Navbar = () => {
 					</div>
 				</div>
 
-				<div className="navbar-end hidden lg:flex">
-					<ul className="menu menu-horizontal p-0 space-x-2">{menuItems}</ul>
+				<div className="navbar-end hidden lg:flex items-center">
+					<ul className="menu menu-horizontal  space-x-2 ">{menuItems}</ul>
 				</div>
 				<div className="lg:hidden navbar-end">
 					<label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">

@@ -10,7 +10,7 @@ const CategoriesCard = ({ category }) => {
 				data-aos="zoom-in"
 				className="card w-96 h-[300px] mx-auto hover:shadow-[#00A4CF] shadow-xl  image-full">
 				<figure>
-					<img src={picture} alt="Shoes" />
+					<img src={picture} alt="Shoes" className='w-full' />
 				</figure>
 				<div className="card-body flex justify-center items-center h-full">
 					<h2 className="card-title text-gray-200 font-bold text-6xl ">{title}</h2>
