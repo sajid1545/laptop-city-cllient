@@ -126,9 +126,11 @@ const Login = () => {
 						</svg>
 					</button>
 				</div>
-				<p className="text-xs text-center sm:px-6 dark:text-gray-400">
+				<p className="text-xs text-center sm:px-6 text-gray-400">
 					Don't have an account?
-					<Link to={`/signup`} className="underline dark:text-gray-100">
+					<Link
+						to={`/signup`}
+						className="underline text-gray-100  text-md ml-2  hover:text-lg duration-500 ">
 						Sign up
 					</Link>
 				</p>

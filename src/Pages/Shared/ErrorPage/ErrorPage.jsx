@@ -8,7 +8,7 @@ const ErrorPage = () => {
 		<div>
 			<div className="grid h-screen px-4 bg-white place-content-center errorPage">
 				<div className="text-center">
-					<p className="text-2xl font-bold tracking-tight text-white sm:text-6xl">
+					<p className="text-2xl font-bold tracking-tight sm:text-8xl">
 						{error.statusText}
 					</p>
 
