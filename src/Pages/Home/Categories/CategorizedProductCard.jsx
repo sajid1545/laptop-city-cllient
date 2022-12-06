@@ -5,8 +5,8 @@ import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
 import { AuthContext } from './../../../Contexts/AuthProvider';
+import SmallSpinner from './../../Shared/Spinners/SmallSpinner';
 
 const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 	const { theme } = useContext(AuthContext);
@@ -78,7 +78,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 				<title> Category - Laptop City </title>
 			</Helmet>
 			<div
-				className={`max-w-lg text-center md:text-left h-full lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl ${
+				className={` text-center md:text-left h-full lg:w-[500px] lg:h-[750px] space-y-5 p-4 shadow-md bg-gray-900 text-gray-100 rounded-xl ${
 					theme ? 'border-2 border-[#B3C5EF]' : 'border-0'
 				}`}>
 				<div className="flex flex-col gap-4 md:gap-0 md:flex-row space-x-4 items-center justify-between">
@@ -90,7 +90,7 @@ const CategorizedProductCard = ({ product, setPurchaseProduct, products }) => {
 						/>
 
 						<div className="flex flex-col space-y-2 ">
-							<div className="flex gap-2">
+							<div className="flex gap-2 justify-center lg:justify-start">
 								<span className="text-sm font-semibold">{userName}</span>
 								{user?.verified && <CheckBadgeIcon className="h-6 w-6 text-blue-500" />}
 							</div>

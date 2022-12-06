@@ -28,7 +28,7 @@
 6. Users have to sign up or login to go to dashboard
 7. Routes of dashboard will change automatically based on the user role.
 8. In order to purchase a laptop, user have to book first, then that product will appear in My orders route.From that route user can pay for it.As soon as price is paid for the products it will disappear from categories and home.
-9. **If the data doest not load that means yours JWT token has expired, so if you ever face such problems just log out and login again**
+9. JWT is used which will expire in 1 day (**If the data doest not load that means yours JWT token has expired, so if you ever face such problems just log out and login again**)
 10. Users can toggle between light and dark mode
 11. If admin deletes a user with **seller** role, next time when the user logs in again, he/she will have buyer role.
 
