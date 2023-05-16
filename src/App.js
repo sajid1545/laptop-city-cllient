@@ -18,7 +18,7 @@ function App() {
 	}, []);
 
 	return (
-		<div data-theme={theme ? 'night' : 'light'} className="max-w-[1440px] mx-auto">
+		<div data-theme={theme ? 'night' : 'light'} className="mx-auto">
 			<RouterProvider router={router} />
 			<ScrollToTop smooth component={<MySVG />} />
 			<Toaster

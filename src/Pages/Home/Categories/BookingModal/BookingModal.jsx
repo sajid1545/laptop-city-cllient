@@ -23,7 +23,6 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 			sellerEmail: userEmail,
 		};
 
-		console.log(purchase);
 		fetch('https://assignment-12-server-pi.vercel.app/book-product', {
 			method: 'POST',
 			headers: {
@@ -99,7 +98,7 @@ const BookingModal = ({ purchaseProduct, setPurchaseProduct }) => {
 							type="submit"
 							value="Book Now"
 							// onClick={() => setPurchaseProduct(null)}
-							className="w-full block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+							className="w-full block mx-auto  py-3 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 cursor-pointer"
 						/>
 					</form>
 				</div>
