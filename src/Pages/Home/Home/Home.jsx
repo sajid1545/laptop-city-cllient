@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Advertisement from '../Advertisement/Advertisement';

@@ -1,11 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
 import AdvertisementCard from './AdvertisementCard';
 import './advertisement.css';
-import LargeSpinner from './../../Shared/Spinners/LargeSpinner';
 
 const Advertisement = () => {
-	const { data: advertisements = [], isLoading,refetch } = useQuery({
+
+	const {
+		data: advertisements = [],
+		isLoading,
+		refetch,
+	} = useQuery({
 		queryKey: ['advertisements'],
 		queryFn: () =>
 			fetch('https://assignment-12-server-pi.vercel.app/display-home-product', {
