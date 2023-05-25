@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigation } from 'react-router-dom';
 import LargeSpinner from '../../Shared/Spinners/LargeSpinner';
 import BookingModal from './BookingModal/BookingModal';
 import CategorizedProductCard from './CategorizedProductCard';
@@ -7,8 +7,12 @@ import { Helmet } from 'react-helmet-async';
 
 const CategorizedProducts = () => {
 	const products = useLoaderData();
-	
+
 	const navigation = useNavigation();
+
+	const location = useLocation();
+
+	const { title } = location.state;
 
 	const [purchaseProduct, setPurchaseProduct] = useState(null);
 	if (navigation.status === 'loading') {
@@ -17,7 +21,7 @@ const CategorizedProducts = () => {
 
 	return (
 		<div>
-			<h1 className="text-5xl text-center font-bold">Choose your desired Laptops </h1>
+			<h1 className="text-5xl text-center font-bold my-10">Choose your desired <span className='font-extrabold'>{title}</span> Laptops </h1>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10 place-items-center">
 				{products.map(
@@ -31,7 +35,6 @@ const CategorizedProducts = () => {
 							/>
 						)
 				)}
-				
 			</div>
 
 			{purchaseProduct !== null && (

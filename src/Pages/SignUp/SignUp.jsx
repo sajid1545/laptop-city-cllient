@@ -100,7 +100,7 @@ const SignUp = () => {
 							<label className="block text-gray-400">Photo URL</label>
 							<input
 								type="text"
-								{...register('photoUrl', { required: 'Name is required' })}
+								{...register('photoUrl', { required: 'Photo URL is required' })}
 								placeholder="Photo URL"
 								className="w-full input-primary px-4 py-3 rounded-md border-gray-700 border-2 bg-gray-900 text-gray-100 focus:border-violet-400"
 							/>

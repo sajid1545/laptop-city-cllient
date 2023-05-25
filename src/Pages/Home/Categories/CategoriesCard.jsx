@@ -5,7 +5,7 @@ const CategoriesCard = ({ category }) => {
 	const { picture, title, _id } = category;
 
 	return (
-		<Link to={`/category/${_id}`}>
+		<Link to={`/category/${_id}`} state={category}>
 			<div
 				// data-aos="zoom-in"
 				className="card w-96 h-[300px] mx-auto hover:shadow-[#00A4CF] shadow-xl  image-full">
