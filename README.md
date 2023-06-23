@@ -1,22 +1,16 @@
-#### App Title ---
 
-# **Laptop City**
 
-#
+# Project -  **`Laptop City`**
 
-## **Live Site**
 
-(https://laptop-city-3d932.web.app/ “Laptop City”)
+## **Live Site** - (https://laptop-city-3d932.web.app/ “Laptop City”)
 
-#
 
-## **Admin Credentials**
 
-## adminEmail : sajid@gmail.com
 
-## adminPassword : 123456
 
-#
+
+
 
 ## Site features
 
