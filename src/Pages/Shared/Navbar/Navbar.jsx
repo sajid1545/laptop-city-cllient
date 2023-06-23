@@ -1,9 +1,9 @@
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../Assets/Images/logo.jpg';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import './navbar.css';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
 	const { user, logOut, theme, handleToggleTheme } = useContext(AuthContext);
@@ -18,14 +18,7 @@ const Navbar = () => {
 					Home
 				</NavLink>
 			</li>
-			<li>
-				<NavLink
-					to="/blogs"
-					className={`font-medium rounded-xl  hover:underline duration-500 ${(isActive) =>
-						isActive ? 'active' : undefined}`}>
-					Blogs
-				</NavLink>
-			</li>
+			
 
 			{user?.uid ? (
 				<>

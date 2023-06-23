@@ -1,10 +1,11 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import SmallSpinner from '../../Shared/Spinners/SmallSpinner';
 
 const CheckoutForm = ({ product }) => {
-	const { price, email, name, phone, _id,productId } = product;
+	const { price, email, name, phone, _id, productId } = product;
 
 	const stripe = useStripe();
 	const elements = useElements();
@@ -14,6 +15,8 @@ const CheckoutForm = ({ product }) => {
 	const [load, setLoad] = useState(false);
 
 	const [clientSecret, setClientSecret] = useState('');
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch('https://assignment-12-server-pi.vercel.app/create-payment-intent', {
@@ -94,11 +97,15 @@ const CheckoutForm = ({ product }) => {
 					console.log(data);
 					if (data.acknowledged) {
 						toast.success('Payment Successful');
-						
+						const timeoutID = setInterval(() => {
+							navigate('/dashboard/myOrders');
+						}, 2500);
+
+						return () => clearTimeout(timeoutID); // Clearing timeOut to avoid memory leaks
 					}
 				});
-			}
-			setLoad(false);
+		}
+		setLoad(false);
 	};
 
 	return (

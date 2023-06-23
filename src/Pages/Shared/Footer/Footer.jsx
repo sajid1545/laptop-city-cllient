@@ -5,7 +5,7 @@ import logo from '../../../Assets/Images/logo.jpg';
 const Footer = () => {
 	return (
 		<div>
-			<footer className="p-24 mt-24 rounded bg-gray-900   text-white">
+			<footer className="py-10 mt-24 rounded bg-gray-900   text-white">
 				<div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0 text-center">
 					<div className="flex items-center flex-row pr-3 space-x-4 sm:space-x-8">
 						<img src={logo} className="rounded" alt="" />
@@ -20,17 +20,17 @@ const Footer = () => {
 						<div className="grid grid-cols-3 place-items-center">
 							<li className="hover:scale-110 duration-500">
 								<a href="https://www.google.com/">
-									<FaGoogle className="text-4xl mr-3" />
+									<FaGoogle className="text-2xl mr-3" />
 								</a>
 							</li>
 							<li className="hover:scale-110 duration-500">
 								<a href="https://twitter.com/home">
-									<FaTwitter className="text-4xl" />
+									<FaTwitter className="text-2xl" />
 								</a>
 							</li>
 							<li className="hover:scale-110 duration-500">
 								<a href="https://www.instagram.com/">
-									<FaInstagram className="text-4xl" />
+									<FaInstagram className="text-2xl" />
 								</a>
 							</li>
 						</div>
